@@ -29,7 +29,7 @@ module Telephony
 
       capability = Twilio::Util::Capability.new account_sid, auth_token
       # TODO: Get the correct value
-      capability.allow_client_outgoing "APYou_Need_An_Application_SID_HERE"
+      capability.allow_client_outgoing "APabe7650f654fc34655fc81ae71caa3ff"
       capability.allow_client_incoming client_name
       capability.generate
     end
