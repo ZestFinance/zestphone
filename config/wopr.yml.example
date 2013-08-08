@@ -1,0 +1,38 @@
+###
+# Because wopr places real calls through twilio and interact with pusher
+# only one person can run it at the time with one set of credentials
+# Therefore every developer should have his/her own account and make
+# sure that callbacks go to different hosts and/or ports
+#
+# Instructions:
+# 1. Buy yourself numbers on twilio
+# 2. Create and setup your personal app in pusher
+# 3. cp config/wopr.yml.example config/wopr.yml
+# 4. open wopr.yml and change corresponding ports and numbers
+###
+
+twilio_account_sid:
+twilio_auth_token:
+
+# The port that capybara starts it's server on
+# This port needs to be able to receive callbacks from twilio
+widget_host_port: 3500
+# This will start a local wopr server on this port
+wopr_server_port: 4500
+# This is the address that wopr's twilio will call back to.
+callback_root: http://yourhost.com:4500
+
+# These bots get the numbers that you bought through twilio
+bots:
+  customer:
+    id: 0
+    phone_number: 3235551212
+  agent1:
+    id: 1
+    phone_number: 3235551213
+  agent2:
+    id: 2
+    phone_number: 3235551214
+  agent3:
+    id: 3
+    phone_number: 3235551215
