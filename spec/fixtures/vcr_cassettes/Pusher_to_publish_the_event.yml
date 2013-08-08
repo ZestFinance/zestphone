@@ -1,0 +1,32 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.pusherapp.com/apps/xxx/events?auth_key=xxx&auth_signature=b1edd32b26fba69801af5cd6a62564296be1aa90937a516243be250adba2826c&auth_timestamp=1360880264&auth_version=1.0&body_md5=49a2e4fc9c914cb63506815a12b6410a
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"test_event","channels":["test"],"data":"{\"key1\":\"value\"}"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - thin 1.5.0 codename Knife
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{}'
+    http_version: 
+  recorded_at: Thu, 14 Feb 2013 22:17:44 GMT
+recorded_with: VCR 2.0.0

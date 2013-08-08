@@ -1,0 +1,10 @@
+<div class="conversation-controls">
+  <form action="#">
+    <input type="text" class="number" name="number" <%= conversation.uiDisableCall() %>  value="<%= conversation.get('to') %>" />
+  </form>
+
+  <div class="friendly-message"><%= friendlyMessage %></div>
+</div>
+
+<div class="transfer-wrapper">
+</div>

@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'zest-telephony';
+  src: url("/assets/telephony/zest-telephony.eot");
+  src: url("/assets/telephony/zest-telephony.eot?#iefix") format('embedded-opentype'), url("/assets/telephony/zest-telephony.woff") format('woff'), url("/assets/telephony/zest-telephony.ttf") format('truetype'), url("/assets/telephony/zest-telephony.svg#zest-telephony") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+#telephony-widget [class^="icon-"]:before,
+#telephony-widget [class*=" icon-"]:before {
+  font-family: 'zest-telephony';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  opacity: 0.8;
+/* fix buttons height, for twitter bootstrap */
+  /*line-height: 1em;*/
+/* Animation center compensation - magrins should be symmetric */
+/* remove if not needed */
+  /*margin-left: 0.4em;*/
+/* you can be more comfortable with increased icons size */
+  /*font-size: 120%;*/
+/* Uncomment for 3D effect */
+ text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
+}
+
+#telephony-widget .icon-attention:before { content: '\26a0'; } /* '⚠' */
+#telephony-widget .icon-ok-circle:before { content: '\2714'; } /* '✔' */
+#telephony-widget .icon-cancel-circle:before { content: '\2716'; } /* '✖' */
+#telephony-widget .icon-list:before { content: '\e782'; } /* '' */
+#telephony-widget .icon-spin5:before { content: '\e838'; } /* '' */
+#telephony-widget .icon-phone-squared:before { content: '\f098'; } /* '' */
+#telephony-widget .icon-mail-alt:before { content: '\f0e0'; } /* '' */
+#telephony-widget .icon-user:before { content: '👤'; } /* '\1f464' */
+#telephony-widget .icon-phone:before { content: '📞'; } /* '\1f4de' */
+#telephony-widget .icon-search:before { content: '🔍'; } /* '\1f50d' */
+#telephony-widget .icon-bell:before { content: '🔔'; } /* '\1f514' */

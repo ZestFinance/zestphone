@@ -1,0 +1,38 @@
+<div id="telephony-transfer">
+  <div>Transfer to...</div>
+
+  <form action="#">
+    <div class="agent-input">
+      <span class="<%= agentStatus %>"></span>
+      <input type="text" name="selected_agent"
+        value="<%= transfer.selectedAgentDisplayText() %>"
+        <%= transfer.uiDisabledFilter() %> />
+      <span class="backspace <%= transfer.uiShowClearSelectedAgent() %>"></span>
+    </div>
+
+    <span class="controls <%= transfer.uiShowTransferControl() %> ">
+      <span class="transfer-type">
+        <label for="transfer_type_one_step" id="one-step-transfer">one step</label>
+        <input <%= transfer.uiCheckedOneStep() %>
+          id="transfer_type_one_step"
+          name="transfer_type"
+          type="radio"
+          value="one_step" >
+      </span>
+      <span class="transfer-type">
+        <label for="transfer_type_two_step" id="two-step-transfer">two step</label>
+        <input <%= transfer.uiCheckedTwoStep() %> <%= transfer.uiDisabledTwoStep() %>
+          id="transfer_type_two_step"
+          name="transfer_type"
+          type="radio"
+          value="two_step" >
+      </span>
+      <button class="initiate-transfer">
+        <span class="text">Initiate Transfer</span>
+      </button>
+    </span>
+
+  </form>
+
+  <div class="agents-wrapper <%= transfer.uiShowAgentsList() %>"></div>
+</div>

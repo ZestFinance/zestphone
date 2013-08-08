@@ -1,0 +1,53 @@
+development:
+  # Put your twilio account SID and auth token here (found at https://www.twilio.com/user/account):
+  account_sid: # ABC
+  auth_token:  # 123
+
+  # A valid phone number associated with your twilio acct
+  # Should be found here: (https://www.twilio.com/user/account/phone-numbers/incoming)
+  # You don't need a leading 1, just a regular 10 digit number
+  outbound_caller_id: # 555-555-5555
+
+  # The host/port/path to which twilio callbacks will be made
+  # Ex: http://example.com:8080/zestphone if your engine is mounted at /zestphone
+  # If you're following the readme, this should be EXTERNAL_HOST/zestphone
+  callback_root: # http://example.com:8080/zestphone
+
+  # The rest of this file can be modified later.
+
+  # When buying numbers for caller_id, this is the url used for inbound calls for your new number
+  voice_url: # http://twimlets.com/forward?PhoneNumber=555-555-5555
+
+  # Used for validating twilio signed requests. Recommended to set
+  # this value to true, to ensure twilio callbacks come from twilio
+  use_twilio_digest_auth: false
+  # With twilio_digest_auth turned on, the domain used to check the signature
+  # if the port is 80, ignore the port; i.e., it should be just "example.com"
+  callback_domain: # example.com:8080
+  # If your "callback_root" is https, this should be true
+  behind_https_proxy: # true
+
+
+#These are the twilio test account credentials
+test:
+  account_sid: AC8ab65d320fc5ca22b757d937ef013a31
+  auth_token: c63af64b012e06a4fa4bf6223823c834
+  outbound_caller_id: 500-555-0006
+  callback_root: http://example.com:8080/zestphone
+  voice_url:
+  use_twilio_digest_auth:
+  callback_domain:
+  behind_https_proxy:
+
+
+# If you run cucumbers, you must put real twilio account info here
+# Also, the callback_root must match the automaton.yml settings
+cucumber:
+  account_sid:
+  auth_token:
+  outbound_caller_id:
+  callback_root:
+  voice_url:
+  use_twilio_digest_auth:
+  callback_domain:
+  behind_https_proxy:

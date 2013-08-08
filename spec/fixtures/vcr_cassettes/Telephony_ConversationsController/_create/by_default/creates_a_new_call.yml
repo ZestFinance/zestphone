@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://AC8ab65d320fc5ca22b757d937ef013a31:c63af64b012e06a4fa4bf6223823c834@api.twilio.com/2010-04-01/Accounts/AC8ab65d320fc5ca22b757d937ef013a31/Calls.json
+    body:
+      encoding: US-ASCII
+      string: From=500-555-0006&To=123-123-1233&Url=http%3A%2F%2Fexample.com%3A8080%2Fzestphone%2Fproviders%2Ftwilio%2Fcalls%2F3%2Fconnect&StatusCallback=http%3A%2F%2Fexample.com%3A8080%2Fzestphone%2Fproviders%2Ftwilio%2Fcalls%2F3%2Fdone&Timeout=60
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/3.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 06 Aug 2013 21:26:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '169'
+      Connection:
+      - close
+      Etag:
+      - ''
+      Last-Modified:
+      - ''
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+    body:
+      encoding: US-ASCII
+      string: ! '{"status":400,"message":"The phone number you are attempting to call,
+        1231231233, is not valid.","code":21211,"more_info":"http:\/\/www.twilio.com\/docs\/errors\/21211"}'
+    http_version: 
+  recorded_at: Tue, 06 Aug 2013 21:26:24 GMT
+recorded_with: VCR 2.0.0

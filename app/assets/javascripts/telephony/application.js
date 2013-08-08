@@ -1,0 +1,12 @@
+//= require "./vendor/pusher"
+
+//= require_tree "../templates/"
+//= require "telephony/namespace"
+//= require "telephony/config"
+//= require "telephony/push"
+//= require "telephony/models/device"
+//= require "telephony/models/agent"
+//= require "telephony/models/transfer"
+//= require "telephony/models/conversation"
+//= require "telephony/collections/agents"
+//= require_tree "./views"

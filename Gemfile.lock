@@ -1,0 +1,281 @@
+GIT
+  remote: git@github.com:ZestFinance/wopr.git
+  revision: 255c5e6de6e510febb105d48c61c590f2e983634
+  tag: 0.1.1
+  specs:
+    wopr (0.1.1)
+      builder
+      rainbow
+      sinatra
+      twilio-ruby
+
+PATH
+  remote: .
+  specs:
+    zestphone (4.7.2)
+      ejs
+      kaminari
+      pusher (= 0.11.3)
+      rails (~> 3.0)
+      sass
+      state_machine
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (3.2.12)
+      actionpack (= 3.2.12)
+      mail (~> 2.4.4)
+    actionpack (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
+      builder (~> 3.0.0)
+      erubis (~> 2.7.0)
+      journey (~> 1.0.4)
+      rack (~> 1.4.5)
+      rack-cache (~> 1.2)
+      rack-test (~> 0.6.1)
+      sprockets (~> 2.2.1)
+    activemodel (3.2.12)
+      activesupport (= 3.2.12)
+      builder (~> 3.0.0)
+    activerecord (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
+      arel (~> 3.0.2)
+      tzinfo (~> 0.3.29)
+    activeresource (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
+    activesupport (3.2.12)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    addressable (2.3.2)
+    american_date (1.0.0)
+    arel (3.0.2)
+    awesome_print (1.0.2)
+    blankslate (2.1.2.4)
+    builder (3.0.4)
+    capybara (2.0.2)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (~> 2.0)
+      xpath (~> 1.0.0)
+    childprocess (0.3.6)
+      ffi (~> 1.0, >= 1.0.6)
+    coderay (1.0.7)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.2)
+    columnize (0.3.6)
+    crack (0.3.1)
+    cucumber (1.2.1)
+      builder (>= 2.1.2)
+      diff-lcs (>= 1.1.3)
+      gherkin (~> 2.11.0)
+      json (>= 1.4.6)
+    cucumber-rails (1.3.0)
+      capybara (>= 1.1.2)
+      cucumber (>= 1.1.8)
+      nokogiri (>= 1.5.0)
+    daemons (1.1.9)
+    database_cleaner (0.9.1)
+    debugger (1.6.1)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.3)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.3)
+    diff-lcs (1.1.3)
+    ejs (1.1.1)
+    erubis (2.7.0)
+    eventmachine (1.0.0)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    factory_girl (4.1.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.1.0)
+      factory_girl (~> 4.1.0)
+      railties (>= 3.0.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
+    ffi (1.3.1)
+    gherkin (2.11.5)
+      json (>= 1.4.6)
+    haml (3.1.7)
+    hike (1.2.1)
+    i18n (0.6.4)
+    jasmine (1.3.1)
+      jasmine-core (~> 1.3.1)
+      rack (~> 1.0)
+      rspec (>= 1.3.1)
+      selenium-webdriver (>= 0.1.3)
+    jasmine-core (1.3.1)
+    jasmine-headless-webkit (0.8.4)
+      coffee-script
+      jasmine-core (~> 1.1)
+      multi_json
+      rainbow
+      sprockets (~> 2)
+    jasmine-rails (0.3.2)
+      jasmine (~> 1.3)
+      jasmine-headless-webkit
+      rails (>= 3.1.0)
+    jbuilder (0.3.2)
+      activesupport (>= 3.0.0)
+      blankslate (>= 2.1.2.4)
+    journey (1.0.4)
+    jquery-rails (2.1.2)
+      railties (>= 3.1.0, < 5.0)
+      thor (~> 0.14)
+    json (1.7.7)
+    jwt (0.1.5)
+      multi_json (>= 1.0)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    mail (2.4.4)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    method_source (0.8)
+    mime-types (1.21)
+    multi_json (1.6.1)
+    mysql2 (0.3.11)
+    nokogiri (1.5.5)
+    polyglot (0.3.3)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
+    pry-rails (0.2.1)
+      pry (>= 0.9.10)
+    pusher (0.11.3)
+      multi_json (~> 1.0)
+      signature (~> 0.1.6)
+    rack (1.4.5)
+    rack-cache (1.2)
+      rack (>= 0.4)
+    rack-protection (1.4.0)
+      rack
+    rack-proxy (0.3.7)
+      rack
+    rack-ssl (1.3.3)
+      rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    rails (3.2.12)
+      actionmailer (= 3.2.12)
+      actionpack (= 3.2.12)
+      activerecord (= 3.2.12)
+      activeresource (= 3.2.12)
+      activesupport (= 3.2.12)
+      bundler (~> 1.0)
+      railties (= 3.2.12)
+    railties (3.2.12)
+      actionpack (= 3.2.12)
+      activesupport (= 3.2.12)
+      rack-ssl (~> 1.3.2)
+      rake (>= 0.8.7)
+      rdoc (~> 3.4)
+      thor (>= 0.14.6, < 2.0)
+    rainbow (1.1.4)
+    rake (10.0.3)
+    rdoc (3.12.2)
+      json (~> 1.4)
+    rspec (2.11.0)
+      rspec-core (~> 2.11.0)
+      rspec-expectations (~> 2.11.0)
+      rspec-mocks (~> 2.11.0)
+    rspec-core (2.11.1)
+    rspec-expectations (2.11.3)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.11.2)
+    rspec-rails (2.11.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec (~> 2.11.0)
+    ruby-graphviz (1.0.8)
+    rubyzip (0.9.9)
+    sass (3.2.5)
+    selenium-webdriver (2.29.0)
+      childprocess (>= 0.2.5)
+      multi_json (~> 1.0)
+      rubyzip
+      websocket (~> 1.0.4)
+    signature (0.1.6)
+    sinatra (1.3.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.3)
+      tilt (~> 1.3, >= 1.3.3)
+    slop (3.3.3)
+    sprockets (2.2.2)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    state_machine (1.1.2)
+    thin (1.5.0)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    thor (0.17.0)
+    tilt (1.3.4)
+    timecop (0.4.6)
+    treetop (1.4.12)
+      polyglot
+      polyglot (>= 0.3.1)
+    twilio-ruby (3.9.0)
+      builder (>= 2.1.2)
+      jwt (>= 0.1.2)
+      multi_json (>= 1.3.0)
+    tzinfo (0.3.35)
+    vcr (2.0.0)
+    webmock (1.8.6)
+      addressable (>= 2.2.7)
+      crack (>= 0.1.7)
+    websocket (1.0.6)
+    xpath (1.0.0)
+      nokogiri (~> 1.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  american_date
+  awesome_print
+  capybara
+  cucumber
+  cucumber-rails
+  database_cleaner
+  debugger
+  ejs
+  factory_girl_rails
+  faker
+  haml
+  jasmine-headless-webkit
+  jasmine-rails
+  jbuilder
+  jquery-rails
+  kaminari
+  mysql2
+  nokogiri
+  pry-rails
+  pusher
+  rack-proxy
+  rainbow
+  rspec-rails
+  ruby-graphviz
+  sass
+  state_machine
+  thin
+  timecop
+  twilio-ruby
+  vcr
+  webmock
+  wopr!
+  zestphone!

@@ -1,0 +1,90 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.pusherapp.com/apps/xxx/events?auth_key=xxx&auth_signature=9d8dd84992451079132d3488ba2c443e2ffc3f17660a3051e9afb449b02fa022&auth_timestamp=1365027060&auth_version=1.0&body_md5=4cc5bdf2645b08256ebe487887ef14f6
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"InitializeWidget","channels":["csrs-1"],"data":"{}"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - thin 1.5.0 codename Knife
+      Content-Length:
+      - '17'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{}'
+    http_version:
+  recorded_at: Wed, 03 Apr 2013 22:11:01 GMT
+- request:
+    method: post
+    uri: http://api.pusherapp.com/apps/xxx/events?auth_key=xxx&auth_signature=fae5fea3b40146f572104a4e505c110a5d4f9025074c96c2fcac24f07eae8f8e&auth_timestamp=1365027061&auth_version=1.0&body_md5=52ab26b405d00982224592083f4131ea
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"statusChange","channels":["csrs-1"],"data":"{\"status\":\"available\",\"timestamp\":1365027061410}"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - thin 1.5.0 codename Knife
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{}'
+    http_version:
+  recorded_at: Wed, 03 Apr 2013 22:11:01 GMT
+- request:
+    method: post
+    uri: http://api.pusherapp.com/apps/xxx/events?auth_key=xxx&auth_signature=de963adb2fb22d1894808358daad82a86a87240317a0c5de767c16098117eba0&auth_timestamp=1365027061&auth_version=1.0&body_md5=f23a8d3865408eeeadbab88b8bd02dd3
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"QueueChange","channels":["csrs-1"],"data":"{\"size\":1,\"event_id\":1}"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - thin 1.5.0 codename Knife
+      Content-Length:
+      - '17'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{}'
+    http_version:
+  recorded_at: Wed, 03 Apr 2013 22:11:01 GMT
+recorded_with: VCR 2.0.0

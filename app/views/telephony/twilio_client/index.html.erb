@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript"
+      src="//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
+    <script type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <link href="//static0.twilio.com/packages/quickstart/client.css"
+      type="text/css" rel="stylesheet" />
+    <script type="text/javascript">
+
+    /* Create the Client with a Capability Token */
+    Twilio.Device.setup("<%= @token %>", {debug: true});
+
+    /* Let us know when the client is ready. */
+    Twilio.Device.ready(function (device) {
+        $("#log").text("Ready");
+        $("button#answer").prop('disabled', true);
+        $("button#hangup").prop('disabled', true);
+    });
+
+    /* Report any errors on the screen */
+    Twilio.Device.error(function (error) {
+        $("#log").text("Error: " + error.message);
+    });
+
+    Twilio.Device.connect(function (conn) {
+        $("#log").text("Successfully established call");
+    });
+
+    /* Log a message when a call disconnects. */
+    Twilio.Device.disconnect(function (conn) {
+        $("#log").text("Call ended");
+        $("button#answer").prop('disabled', true);
+        $("button#hangup").prop('disabled', true);
+    });
+
+    /* Listen for incoming connections */
+    Twilio.Device.incoming(function (conn) {
+        $("#log").text("Incoming connection from " + conn.parameters.From);
+        Twilio.Device.my_connection = conn;
+        $("button#answer").prop('disabled', false);
+        $("button#hangup").prop('disabled', true);
+    });
+
+    function answer() {
+        Twilio.Device.my_connection.accept();
+        $("button#answer").prop('disabled', true);
+        $("button#hangup").prop('disabled', false);
+    }
+
+    /* A function to end a connection to Twilio. */
+    function hangup() {
+        Twilio.Device.disconnectAll();
+        $("button#answer").prop('disabled', true);
+        $("button#hangup").prop('disabled', true);
+    }
+    </script>
+  </head>
+  <body>
+
+    <button id="answer" class="call" onclick="answer();">
+      Answer
+    </button>
+
+    <!-- use an onclick action to hang up the call when the user presses
+    the button -->
+    <button id="hangup" class="hangup" onclick="hangup();">
+        Hangup
+    </button>
+    <div id="log">Loading...</div>
+  </body>
+</html>

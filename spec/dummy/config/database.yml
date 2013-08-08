@@ -1,0 +1,38 @@
+telephony_development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: telephony_development
+  pool: 5
+  username: root
+  password:
+
+telephony_test: &TEST
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: telephony_test
+  pool: 5
+  username: root
+  password:
+
+cucumber: *TEST
+telephony_cucumber: *TEST
+
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: telephony_development
+  pool: 5
+  username: root
+  password:
+
+test: &DUMMY_TEST
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: telephony_test
+  pool: 5
+  username: root
+  password:

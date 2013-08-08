@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://AC8ab65d320fc5ca22b757d937ef013a31:c63af64b012e06a4fa4bf6223823c834@api.twilio.com/2010-04-01/Accounts/AC8ab65d320fc5ca22b757d937ef013a31/Calls.json
+    body:
+      encoding: US-ASCII
+      string: From=500-555-0006&To=310-456-7890&Url=http%3A%2F%2Fexample.com%3A8080%2Fzestphone%2Fproviders%2Ftwilio%2Fcalls%2F1965%2Fconnect&StatusCallback=http%3A%2F%2Fexample.com%3A8080%2Fzestphone%2Fproviders%2Ftwilio%2Fcalls%2F1965%2Fdone&Timeout=60
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/3.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 14 Feb 2013 22:17:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '978'
+      Connection:
+      - close
+      Etag:
+      - ''
+    body:
+      encoding: US-ASCII
+      string: ! '{"sid":"CA860d6bf8eb644ddf32e17830e1db6bed","date_created":"Thu,
+        14 Feb 2013 22:17:46 +0000","date_updated":"Thu, 14 Feb 2013 22:17:46 +0000","parent_call_sid":null,"account_sid":"AC8ab65d320fc5ca22b757d937ef013a31","to":"+13104567890","to_formatted":"(310)
+        456-7890","from":"+15005550006","from_formatted":"(500) 555-0006","phone_number_sid":null,"status":"queued","start_time":null,"end_time":null,"duration":null,"price":null,"direction":null,"answered_by":null,"api_version":"2010-04-01","annotation":null,"forwarded_from":null,"group_sid":null,"caller_name":null,"uri":"\/2010-04-01\/Accounts\/AC8ab65d320fc5ca22b757d937ef013a31\/Calls\/CA860d6bf8eb644ddf32e17830e1db6bed.json","subresource_uris":{"notifications":"\/2010-04-01\/Accounts\/AC8ab65d320fc5ca22b757d937ef013a31\/Calls\/CA860d6bf8eb644ddf32e17830e1db6bed\/Notifications.json","recordings":"\/2010-04-01\/Accounts\/AC8ab65d320fc5ca22b757d937ef013a31\/Calls\/CA860d6bf8eb644ddf32e17830e1db6bed\/Recordings.json"}}'
+    http_version: 
+  recorded_at: Thu, 14 Feb 2013 22:17:46 GMT
+recorded_with: VCR 2.0.0

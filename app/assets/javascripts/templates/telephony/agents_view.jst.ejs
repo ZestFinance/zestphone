@@ -1,0 +1,8 @@
+<ol class="agents-list">
+  <% agents.each(function(agent) { %>
+    <li class="<%= agent.status() %>" data-id="<%= agent.id %>">
+      <span class="icon-user <%= agent.status() %>"></span>
+      <%= agent.displayText() %>
+    </li>
+  <% }) %>
+</ol>

@@ -1,0 +1,11 @@
+Zest.Telephony.Config = {
+  PUSHER_APP_KEY: "<%= PUSHER_CONFIG['app_key'] %>",
+  STYLESHEET_PATH: "<%= asset_path('telephony/widget.css') %>",
+  BASE_PATH: "/zestphone",
+  AGENT_PATH: "/zestphone/agents",
+  TWILIO_CLIENT_ENABLED: $('#telephony-widget').data('agent_phone_type') == 'twilio_client',
+  TWILIO_CLIENT_URL: "//static.twilio.com/libs/twiliojs/1.1/twilio.min.js",
+  TWILIO_CLIENT_TOKEN_PATH: "/zestphone/twilio_client/token",
+  CONVERSATION_PATH: "/zestphone/conversations"
+}
+Pusher.channel_auth_endpoint = "/zestphone/signals/agents/presences/authenticate";

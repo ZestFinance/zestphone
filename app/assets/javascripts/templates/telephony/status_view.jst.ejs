@@ -1,0 +1,4 @@
+<button class="agent-status <%= agent.status() %>" <%= agent.disabled() %> >
+  <span class="caps"><%= agent.humanizedStatus() %></span>
+  <span class="icon-spinner float-right <%= agent.display() %>"></span>
+</button>

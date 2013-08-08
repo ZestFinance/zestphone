@@ -1,0 +1,23 @@
+<button class="initiate-conversation <%= conversation.uiShowCall() %>" <%= conversation.uiDisableCall() %> >
+  <span class="text">Call</span>
+  <span class="icon-spinner float-right <%= conversation.uiShowCallSpinner() %>"></span>
+</button>
+
+<button class="initiate-hold <%= conversation.uiShowHold() %>" <%= conversation.uiDisableHold() %> >
+  <span class="text">Hold</span>
+  <span class="icon-spinner float-right <%= conversation.uiShowHoldSpinner() %>"></span>
+</button>
+
+<button class="resume <%= conversation.uiShowResume() %>" <%= conversation.uiDisableResume() %> >
+  <span class="text">Resume</span>
+  <span class="icon-spinner float-right <%= conversation.uiShowResumeSpinner() %>"></span>
+</button>
+
+<button class="show-agents <%= conversation.uiShowTransfer() %>" <%= conversation.uiDisableTransfer() %>>
+  <span class="text">Transfer</span>
+  <span class="icon-user"></span>
+</button>
+
+<button class="cancel-transfer <%= conversation.uiShowCancelTransfer() %>">
+  <span class="text">Cancel Transfer</span>
+</button>

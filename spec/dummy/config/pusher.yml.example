@@ -1,0 +1,14 @@
+# Copy this file to config/pusher.yml
+
+development:
+  # Get these values from
+  # https://app.pusherapp.com/apps/#{your_app_id}/api_access
+  app_id: # Pusher app_id
+  app_key: # Pusher app_key
+  secret: # Pusher secret
+
+# Real pusher is not used in test, but these fake creds need to be here.
+test:
+  app_id: xxx
+  app_key: xxx
+  secret: xxx
