@@ -1,0 +1,35 @@
+development:
+  -
+    name: 'hollywood'
+    host: '192.168.1.1'
+    username: ''
+    password: ''
+  -
+    name: 'other_location'
+    host: '192.168.1.2'
+    username: ''
+    password: ''
+
+test:
+  -
+    name: 'hollywood'
+    host: '192.168.1.1'
+    username: ''
+    password: ''
+  -
+    name: 'other_location'
+    host: '192.168.1.2'
+    username: ''
+    password: ''
+
+production:
+  -
+    name: 'hollywood'
+    host: '192.168.1.1'
+    username: ''
+    password: ''
+  -
+    name: 'other_location'
+    host: '192.168.1.2'
+    username: ''
+    password: ''
