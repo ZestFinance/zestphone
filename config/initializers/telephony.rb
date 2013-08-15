@@ -19,3 +19,23 @@ Telephony::OFFICE_HOURS = Class.new do
 end unless defined?(Telephony::OFFICE_HOURS)
 
 Telephony::CallCenter.load Rails.env.to_s, Rails.root.to_s + '/config/call_centers.yml'
+
+unless defined?(TWILIO_CONFIG)
+  filename = 'config/twilio.yml'
+  if File.exists? Rails.root.join(filename)
+    twilio_configs = YAML.load_file Rails.root.join(filename)
+    TWILIO_CONFIG = twilio_configs[Rails.env]
+  else
+    TWILIO_CONFIG = nil
+  end
+end
+
+if TWILIO_CONFIG
+  TWILIO_CONFIG.to_options!
+
+  Telephony.provider = Telephony::Providers::TwilioProvider.new TWILIO_CONFIG
+  Telephony.hold_music = TWILIO_CONFIG[:hold_music]
+  Telephony.wait_music = TWILIO_CONFIG[:wait_music]
+else
+  Rails.logger.warn "#{filename} does not include config for RAILS_ENV=#{Rails.env}"
+end

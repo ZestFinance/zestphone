@@ -5,6 +5,7 @@ module Telephony
     describe TwilioProvider do
       before do
         @config = YAML.load_file(Rails.root.join('config', 'twilio.yml'))['test']
+        @config.to_options!
         @twilio_provider = TwilioProvider.new @config
       end
 
@@ -17,6 +18,7 @@ module Telephony
               outbound_caller_id: 'outbound_caller_id',
               callback_root: 'callback_root'
             }
+            @config.to_options!
 
             @twilio_provider = TwilioProvider.new @config
           end

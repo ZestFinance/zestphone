@@ -16,7 +16,6 @@ module Telephony
         :twilio_provider_url
 
       def initialize(config)
-        config.to_options!
         self.account_sid = config[:account_sid]
         self.auth_token = config[:auth_token]
         self.outbound_caller_id = config[:outbound_caller_id]

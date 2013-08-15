@@ -27,6 +27,8 @@ development:
   # If your "callback_root" is https, this should be true
   behind_https_proxy: # true
 
+  hold_music: https://api.twilio.com/cowbell.mp3
+  wait_music: http://demo.twilio.com/hellomonkey/monkey.mp3
 
 #These are the twilio test account credentials
 test:
@@ -38,6 +40,8 @@ test:
   use_twilio_digest_auth:
   callback_domain:
   behind_https_proxy:
+  hold_music: https://example.com/hold_music.wav
+  wait_music: https://example.com/wait_music.wav
 
 
 # If you run cucumbers, you must put real twilio account info here

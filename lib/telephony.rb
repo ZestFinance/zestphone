@@ -3,7 +3,11 @@ require 'telephony/helper'
 require 'telephony/providers/twilio_provider'
 
 module Telephony
-  mattr_accessor :provider, :whitelist, :pop_url_finder
+  mattr_accessor :provider,
+                 :whitelist,
+                 :pop_url_finder,
+                 :hold_music,
+                 :wait_music
 
   def self.whitelisted? number
     ! whitelist || begin

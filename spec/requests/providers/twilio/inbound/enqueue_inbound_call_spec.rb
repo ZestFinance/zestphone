@@ -78,5 +78,18 @@ module Telephony
           .should == "/zestphone/providers/twilio/calls/#{@call.id}/leave_queue"
       end
     end
+
+    context 'when a customer gets the wait music' do
+      before do
+        get "/zestphone/providers/twilio/inbound_calls/wait_music"
+      end
+
+      it 'should play the correct file' do
+        xml = Nokogiri::XML response.body
+        play = xml.at('/Response/Play')
+        play.text.should == 'https://example.com/wait_music.wav'
+        play.attributes['loop'].value.should == '0'
+      end
+    end
   end
 end
