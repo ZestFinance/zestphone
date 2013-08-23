@@ -1,14 +1,14 @@
 ## Zestphone setup
 
 ### We have two goals:
-1) To be able to run the tests (bundle exec rake)
-2) To be able to make a phone call
+1. To be able to run the tests (bundle exec rake)
+2. To be able to make a phone call
 
 We'll start with running the tests, because that gets you much of the way there.
 
 ### Prerequisites:
-1) A twilio account. (twilio.com)
-2) A pusher account. (pusher.com)
+1. A twilio account. (twilio.com)
+2. A pusher account. (pusher.com)
 
 ### Configure your development server
 - git clone git@github.com:ZestFinance/zestphone.git
