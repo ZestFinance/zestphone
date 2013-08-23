@@ -13,23 +13,22 @@ We'll start with running the tests, because that gets you much of the way there.
 ### Configure your development server
 - git clone git@github.com:ZestFinance/zestphone.git
 - cd zestphone/
-bundle install
-be rake app:db:create:all
-be rake app:db:migrate
-be rake app:db:test:prepare
-cp spec/dummy/config/twilio.yml.example spec/dummy/config/twilio.yml
-cp spec/dummy/config/pusher.yml.example spec/dummy/config/pusher.yml
-be rake
+- bundle install
+- bundle exec rake app:db:create:all
+- bundle exec rake app:db:migrate
+- bundle exec rake app:db:test:prepare
+- cp spec/dummy/config/twilio.yml.example spec/dummy/config/twilio.yml
+- cp spec/dummy/config/pusher.yml.example spec/dummy/config/pusher.yml
+- bundle exec rake
 
-### Allow Twilio to connect to you
+### Allowing Twilio to connect to you
 The trickiest thing about twilio development is that twilio has to call your server, which means your server has to be accessible from the outside world. Basically what happens is during the life of a call twilio fires events to a url that you specify, so that your app knows when a call is answered, hung up, etc.
 
 There are a few different ways to make this happen, and none of them are very user-friendly.
-1) Be on a box that allows your rails server (port 3000 by default) to be accessible from the internet. This is the easiest.
-2) Open an ssh tunnel to a machine that is externally available and port forward to your local machine. A sample command to do this: ssh -N -R 8000:0:3000 example.com. This forwards port 8000 on example.com to port 3000 on your local machine.
-3) Use localtunnel. Instructions here: http://www.twilio.com/engineering/2011/06/06/making-a-local-web-server-public-with-localtunnel
-4) Use ngrok https://ngrok.com/
-
+1. Be on a box that allows your rails server (port 3000 by default) to be accessible from the internet. This is the easiest.
+2. Open an ssh tunnel to a machine that is externally available and port forward to your local machine. A sample command to do this: ssh -N -R 8000:0:3000 example.com. This forwards port 8000 on example.com to port 3000 on your local machine.
+3. Use localtunnel. Instructions here: http://www.twilio.com/engineering/2011/06/06/making-a-local-web-server-public-with-localtunnel
+4. Use ngrok https://ngrok.com/
 
 Whatever your external facing domain and port are, make a note and we’ll refer to it as EXTERNAL_HOST. In the example command in #2 above, this would be http://example.com:8000
 
@@ -40,7 +39,7 @@ Create a number or configure an existing one. Edit the number and change the “
 
 #### Edit your Config Files
 vim spec/dummy/config/twilio.yml
-# Follow the instructions in the twilio.yml file.
+Follow the instructions in the twilio.yml file.
 Make sure callback_root: looks something like the following:
   callback_root: http://example.com:8000/zestphone
 
@@ -49,7 +48,7 @@ https://app.pusherapp.com/apps/your_app_id/web_hooks
 Make sure Presence is selected
 
 vim spec/dummy/config/pusher.yml
-# Follow the instructions in the pusher.yml file.
+Follow the instructions in the pusher.yml file.
 Pusher >> Choose App > Your App Name > API Access
 https://app.pusherapp.com/apps/your_app_id/api_access
 
