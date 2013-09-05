@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "telephony/version"
 
 Gem::Specification.new do |s|
-  s.name        = "zestphone"
+  s.name        = "telephony"
   s.version     = Telephony::VERSION
   s.authors     = ["Zest"]
   s.homepage    = "https://github.com/ZestFinance/zestphone"
