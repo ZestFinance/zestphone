@@ -2,16 +2,17 @@
 
 <div id="telephony-widget"
      data-csr_id="<%= params['csr-id'] || 1000 %>"
-     data-agent_generate_caller_id="<%= params['agent-generate-caller-id'] || 'true' %>"
-     data-agent_default_status="<%= params['agent-default-status'] || 'not_available' %>"
      data-agent_name="<%= params['agent-name'] || "Some Agent" %>"
-     data-agent_phone_number=<%= params['agent-number'] || '5555551234' %>
-     data-agent_phone_ext="<%= params['agent-ext'] || "10" %>"
-     data-agent_sip_number="<%= params['agent-sip-number'] || "333" %>"
-     data-agent_call_center_name="<%= params['agent-call-center-name'] || "other_location" %>"
+     data-agent_phone_number="<%= params['agent-number'] || "5555551234" %>"
      data-agent_phone_type="<%= params['agent-phone-type'] || "phone" %>"
-     data-agent_transferable_agents="<%= (params['agent-transferable-agents'] || []).to_json %>"
-     data-csr_type="A">
+     data-csr_type="<%= params['agent-csr-type'] %>"
+     data-agent_default_status="<%= params['agent-default-status'] %>"
+     data-agent_phone_ext="<%= params['agent-ext'] %>"
+     data-agent_call_center_name="<%= params['agent-call-center-name'] %>"
+     data-agent_sip_number="<%= params['agent-sip-number'] %>"
+     data-agent_transferable_agents="<%= (params['agent-transferable-agents']).to_json %>"
+     data-agent_generate_caller_id="<%= params['agent-generate-caller-id'] %>"
+>
 </div>
 <script src="/assets/telephony/widget.js" type="text/javascript"></script>
 <br/>
@@ -27,25 +28,26 @@
   });
 </script>
 
-<div class="events">
-  <button class="clear">Clear</button>
-  <ul></ul>
-</div>
+<% if params['debug'] %>
+  <div class="events">
+    <button class="clear">Clear</button>
+    <ul></ul>
+  </div>
 
-<h3>Sample code showing click to call</h3>
-<a href="#" class="call_to" data-call-params="">(310) 123-4567</a><br/><br/>
+  <h3>Sample code showing click to call</h3>
+  <a href="#" class="call_to" data-call-params="">(310) 123-4567</a><br/><br/>
 
-<script type="text/javascript">
-  $('a.call_to').click(function(event) {
-    var data = {
-      to: $(event.currentTarget).text(),
-      loan_id: 1,
-      to_id: 2,
-      to_type: 'borrower'
-    };
-    $(this).trigger("telephony:ClickToCall", data);
-    to: $(event.currentTarget).text()
-    return false;
-  });
-</script>
-
+  <script type="text/javascript">
+    $('a.call_to').click(function(event) {
+      var data = {
+        to: $(event.currentTarget).text(),
+        loan_id: 1,
+        to_id: 2,
+        to_type: 'borrower'
+      };
+      $(this).trigger("telephony:ClickToCall", data);
+      to: $(event.currentTarget).text()
+      return false;
+    });
+  </script>
+<% end %>
