@@ -13,6 +13,8 @@ It's only known to work for sure using ruby 1.9.3, but any 1.9.x ruby version is
 - A database that is supported by rails, and that supports locking (only MySql is known to work)
 - Your application needs to include backbone.js
 
+The complete setup guide is here: https://github.com/ZestFinance/zestphone/blob/master/SETUP.md
+
 ## Javascript events your app can respond to
 
 All events have this basic data:
