@@ -27,6 +27,9 @@ module Telephony
           conversation = oldest_queued_conversation
 
           if conversation
+            agent_call = conversation.calls.create! number: agent.phone_number, agent: agent
+            agent_call.connect!
+
             conversation.customer.redirect_to_inbound_connect csr_id
 
             pop_url = Telephony.pop_url_finder &&
@@ -41,6 +44,7 @@ module Telephony
             raise Telephony::Error::QueueEmpty.new
           end
         rescue Telephony::Error::NotInProgress
+          agent_call.destroy
           conversation.customer.terminate!
           retry
         end
@@ -75,13 +79,13 @@ module Telephony
           old_status = agent.status
           agent.on_a_call
         end
-      end
 
-      begin
-        yield agent
-      rescue => error
-        agent.fire_events old_status
-        raise error
+        begin
+          yield agent
+        rescue => error
+          agent.fire_events old_status
+          raise error
+        end
       end
     end
   end

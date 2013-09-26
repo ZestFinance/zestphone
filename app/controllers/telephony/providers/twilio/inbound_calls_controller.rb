@@ -24,13 +24,8 @@ module Telephony
 
         def connect
           @call = Call.find_by_sid params[:CallSid]
-
-          Conversation.find_inbound_with_lock(@call.conversation_id) do |conversation|
-            agent = Agent.find_by_csr_id params[:csr_id]
-            @connecting_call = @call.conversation.calls.create! number: agent.phone_number,
-              agent: agent
-            @connecting_call.connect!
-          end
+          agent = Agent.find_by_csr_id params[:csr_id]
+          @connecting_call = @call.conversation.calls.find_by_agent_id agent.id
 
           render template: '/telephony/providers/twilio/calls/connect'
         end

@@ -6,6 +6,7 @@ describe 'Connecting a dequeued call' do
       Telephony::Call.any_instance.stub(:whitelisted_number?).and_return false
       call = create :call
       agent = create :agent
+      create :connecting_agent_leg, conversation: call.conversation, agent: agent
 
       post "/zestphone/providers/twilio/inbound_calls/connect?csr_id=#{agent.csr_id}",
         CallSid: call.sid
@@ -24,6 +25,7 @@ describe 'Connecting a dequeued call' do
       @conversation = create :conversation
       customer_leg = create :call, conversation: @conversation
       @agent = create :agent, phone_number: '222-333-4444'
+      create :connecting_agent_leg, conversation: @conversation, agent: @agent
 
       post "/zestphone/providers/twilio/inbound_calls/connect?csr_id=#{@agent.csr_id}",
         CallSid: customer_leg.sid
@@ -64,6 +66,7 @@ describe 'Connecting a dequeued call' do
       @conversation = create :conversation, caller_id: 'caller_id'
       customer_leg = create :call, conversation: @conversation
       @agent = create :agent, phone_type: Telephony::Agent::PhoneType::TWILIO_CLIENT
+      create :connecting_agent_leg, conversation: @conversation, agent: @agent
 
       post "/zestphone/providers/twilio/inbound_calls/connect?csr_id=#{@agent.csr_id}",
         CallSid: customer_leg.sid
@@ -95,6 +98,7 @@ describe 'Connecting a dequeued call' do
         phone_type: Telephony::Agent::PhoneType::SIP,
         sip_number: '200',
         call_center_name: 'other_location'
+      create :connecting_agent_leg, conversation: @conversation, agent: @agent
 
       post "/zestphone/providers/twilio/inbound_calls/connect?csr_id=#{@agent.csr_id}",
         CallSid: customer_leg.sid

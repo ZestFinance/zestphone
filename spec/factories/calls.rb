@@ -79,6 +79,11 @@ FactoryGirl.define do
       end
     end
 
+    factory :connecting_agent_leg do
+      agent
+      state :connecting
+    end
+
     factory :active_agent_leg do
       agent
       state :in_progress
