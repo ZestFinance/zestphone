@@ -19,7 +19,9 @@ module Telephony
 
     def status
       agent = Agent.find_by_csr_id params[:id]
-      agent.fire_events params[:event]
+      agent.with_lock do
+        agent.fire_events params[:event]
+      end
 
       render :json => { :csr_id => agent.csr_id, :status => agent.status }
     end
