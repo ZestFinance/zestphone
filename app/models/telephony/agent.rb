@@ -126,7 +126,7 @@ module Telephony
       call = active_call
 
       if call.nil?
-        with_lock { not_available! if (active_call.nil? and on_a_call?) }
+        with_lock { call_ended! if (active_call.nil? and on_a_call?) }
       elsif call.created_at < 5.minutes.ago && Telephony.provider.call_ended?(call.sid)
         Conversation.find_with_lock(call.conversation_id) do
           call.reload.terminate

@@ -24,7 +24,11 @@ module Telephony
         end
 
         event :not_available do
-          transition [:offline, :on_a_call, :available] => :not_available
+          transition [:offline, :available] => :not_available
+        end
+
+        event :call_ended do
+          transition :on_a_call => :not_available
         end
 
         event :toggle_available do
