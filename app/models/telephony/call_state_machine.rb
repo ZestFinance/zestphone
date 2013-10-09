@@ -10,6 +10,10 @@ module Telephony
           transition not_initiated: :connecting
         end
 
+        event :reject do
+          transition not_initiated: :terminated
+        end
+
         event :no_answer do
           transition connecting: :terminated
         end

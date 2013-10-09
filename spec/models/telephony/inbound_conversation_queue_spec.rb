@@ -94,6 +94,53 @@ module Telephony
       end
     end
 
+    describe '.reject' do
+      before do
+        @count = Conversation.count
+        @from = '111-111-1111'
+        @to = '222-222-2222'
+        @call_sid = "call_sid"
+
+        @conversation = InboundConversationQueue.reject From: @from,
+                                                        To: @to,
+                                                        CallSid: @call_sid
+      end
+
+      it 'creates an inbound conversation' do
+        Conversation.count.should == @count + 1
+        conversation = Conversation.last
+        conversation.should be_inbound
+      end
+
+      it "sets the conversation's number to the called number" do
+        conversation = Conversation.last
+        conversation.number.should == @to
+      end
+
+      it "sets the conversation's caller id to the called number" do
+        conversation = Conversation.last
+        conversation.caller_id.should == @to
+      end
+
+      it 'sets the conversation to closed greetings' do
+        conversation = Conversation.last
+        conversation.should be_terminated
+      end
+
+      it 'creates customer leg' do
+        conversation = Conversation.last
+        conversation.should have(1).call
+        call = conversation.calls.first
+        call.number.should == @from
+        call.sid.should == @call_sid
+        call.should be_terminated
+      end
+
+      it 'creates a rejected event for the customer leg' do
+        Telephony::Events::Reject.where(call_id: Telephony::Call.last.id).should be_exists
+      end
+    end
+
     describe '.dequeue' do
       context 'given a queue with a conversation' do
         before do

@@ -37,6 +37,19 @@ module Telephony
         play.text.should =~ /cowbell\.mp3$/
       end
     end
+
+    context "number is on the reject list" do
+      before do
+        Telephony::BlacklistedNumber.create number: Telephony.americanize(@from)
+        post '/zestphone/providers/twilio/inbound_calls', From: @from, To: @to
+      end
+
+      it "rejects the call" do
+        xml = Nokogiri::XML response.body
+        reject = xml.at('/Response/Reject')
+        reject.should be_present
+      end
+    end
   end
 
   describe 'Enqueue an inbound call', :vcr do

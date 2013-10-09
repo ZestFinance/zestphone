@@ -21,6 +21,15 @@ module Telephony
       end
     end
 
+    def self.reject(args)
+      Conversation.transaction do
+        conversation = Conversation.create_inbound! number: args[:To], caller_id: args[:To]
+        customer_leg = conversation.calls.create! number: args[:From], sid: args[:CallSid]
+        customer_leg.reject!
+        conversation
+      end
+    end
+
     def self.dequeue(csr_id)
       with_agent_on_a_call(csr_id) do |agent|
         begin

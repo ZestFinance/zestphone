@@ -3,7 +3,12 @@ module Telephony
     module Twilio
       class InboundCallsController < ApplicationController
         def create
-          play_message
+          if Telephony::BlacklistedNumber.where(number: Telephony.americanize(params[:From])).exists?
+            InboundConversationQueue.reject params
+            render :reject
+          else
+            play_message
+          end
         end
 
         def wait_music

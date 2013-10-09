@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806213053) do
+ActiveRecord::Schema.define(:version => 20131009204026) do
 
   create_table "telephony_agents", :force => true do |t|
     t.integer  "csr_id",                                                               :null => false
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20130806213053) do
 
   add_index "telephony_agents", ["csr_id"], :name => "index_telephony_agents_on_csr_id"
   add_index "telephony_agents", ["status"], :name => "index_telephony_agents_on_status"
+
+  create_table "telephony_blacklisted_numbers", :force => true do |t|
+    t.string   "number",     :limit => 10
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "telephony_blacklisted_numbers", ["number"], :name => "index_telephony_blacklisted_numbers_on_number", :unique => true
 
   create_table "telephony_calls", :force => true do |t|
     t.string   "sid"

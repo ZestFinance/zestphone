@@ -90,5 +90,15 @@ describe Telephony do
       end
     end
   end
+
+  describe '.americanize' do
+    it 'unformats a formatted number' do
+      Telephony.americanize('(123) 456-7890').should == '1234567890'
+    end
+
+    it 'does nothing to an unformatted number' do
+      Telephony.americanize('1234567890').should == '1234567890'
+    end
+  end
 end
 

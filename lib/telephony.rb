@@ -11,14 +11,9 @@ module Telephony
 
   def self.whitelisted? number
     ! whitelist || begin
-      normalize = -> number do
-        number
-          .gsub(/\D/, '')
-          .last(10)
-      end
-      normalized_number = normalize[number]
+      normalized_number = americanize number
       whitelist.any? do |whitelisted_number|
-        normalize[whitelisted_number] == normalized_number
+        americanize(whitelisted_number) == normalized_number
       end
     end
   end
@@ -29,5 +24,11 @@ module Telephony
     else
       provider.uncallable_number
     end
+  end
+
+  def self.americanize number
+    number
+      .gsub(/\D/, '')
+      .last(10)
   end
 end

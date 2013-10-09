@@ -28,6 +28,22 @@ module Telephony
       end
     end
 
+    describe '#reject!' do
+      before do
+        @call = create :call
+        @call.reject!
+      end
+
+      it 'transitions to "terminated"' do
+        @call.should be_terminated
+      end
+
+      it 'logs a reject event' do
+        event = Events::Reject.where(call_id: @call.id).last
+        event.should be
+      end
+    end
+
     describe '#no_answer!' do
       before do
         @call = create :connecting_call
