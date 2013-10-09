@@ -65,7 +65,21 @@ module Telephony
         before do
           @agent = create :on_a_call_agent
 
-          @agent.not_available!
+          @agent.not_available
+
+          @agent.reload
+        end
+
+        it 'does not transition to not available' do
+          @agent.status.should == Agent::ON_A_CALL
+        end
+      end
+
+      context 'given an available agent' do
+        before do
+          @agent = create :available_agent
+
+          @agent.not_available
 
           @agent.reload
         end
