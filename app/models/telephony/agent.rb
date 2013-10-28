@@ -97,7 +97,7 @@ module Telephony
       else
         job = Telephony::Jobs::AgentOffline.new id, timestamp
         if Telephony::DELAYED_JOB.respond_to?(:enqueue)
-          Telephony::DELAYED_JOB.enqueue job, run_at: 30.seconds.from_now
+          Telephony::DELAYED_JOB.enqueue job, run_at: 15.minutes.from_now
         else
           job.update_status
         end
