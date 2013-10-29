@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 1.9.3
+branches:
+  only:
+    - develop
+    - master
+    - /^release\/.*$/
+    - /^hotfix\/.*$/
+    - /^feature\/.*$/
+    - /^bug\/.*$/
+    - /^chore\/.*$/
