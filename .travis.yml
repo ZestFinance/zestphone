@@ -1,12 +1,25 @@
 language: ruby
+cache: bundler
 rvm:
   - 1.9.3
 branches:
   only:
-    - develop
     - master
     - /^release\/.*$/
     - /^hotfix\/.*$/
     - /^feature\/.*$/
     - /^bug\/.*$/
     - /^chore\/.*$/
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+bundler_args: --without development
+script:
+  - cp ./spec/dummy/config/call_centers.yml.example ./spec/dummy/config/call_centers.yml
+  - cp ./spec/dummy/config/twilio.yml.example ./spec/dummy/config/twilio.yml
+  - cp ./spec/dummy/config/pusher.yml.example ./spec/dummy/config/pusher.yml
+  - bundle exec rake app:db:create:all --trace
+  - bundle exec rake app:db:schema:load --trace
+  - bundle exec rake app:db:test:prepare --trace
+  - bundle exec rake spec --trace
+  - bundle exec rake jasmine:headless --trace
