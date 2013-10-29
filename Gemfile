@@ -24,7 +24,7 @@ group :development, :test do
   gem 'capybara'
   gem 'cucumber-rails'
   gem 'database_cleaner'
-  gem 'wopr', git: "git@github.com:ZestFinance/wopr.git", tag: '0.1.1'
+  gem 'wopr', git: "git://github.com/ZestFinance/wopr.git", tag: '0.1.1'
   gem 'rspec-rails'
   gem 'vcr'
   gem 'webmock'

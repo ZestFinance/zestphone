@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:ZestFinance/wopr.git
+  remote: git://github.com/ZestFinance/wopr.git
   revision: 255c5e6de6e510febb105d48c61c590f2e983634
   tag: 0.1.1
   specs:
@@ -159,7 +159,7 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-protection (1.4.0)
+    rack-protection (1.5.1)
       rack
     rack-proxy (0.3.7)
       rack
@@ -208,10 +208,10 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     signature (0.1.6)
-    sinatra (1.3.5)
+    sinatra (1.4.4)
       rack (~> 1.4)
-      rack-protection (~> 1.3)
-      tilt (~> 1.3, >= 1.3.3)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
     slop (3.3.3)
     sprockets (2.2.2)
       hike (~> 1.2)
