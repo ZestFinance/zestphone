@@ -16,10 +16,10 @@ gem 'ejs'
 
 group :development do
   gem 'rack-proxy', :require => false
+  gem 'debugger'
 end
 
 group :development, :test do
-  gem 'debugger'
   gem 'cucumber'
   gem 'capybara'
   gem 'cucumber-rails'
