@@ -260,6 +260,25 @@ module Telephony
       end
     end
 
+    describe '#terminate_active_call' do
+      subject { Agent.new.terminate_active_call }
+
+      context "given an agent that's on a call" do
+        let(:active_call) { double terminate!: :terminated }
+        before { Agent.any_instance.should_receive(:active_call)
+                                   .twice
+                                   .and_return active_call }
+        it { should == :terminated }
+      end
+
+      context "given an agent that's not on a call" do
+        let(:active_call) { nil }
+        before { Agent.any_instance.should_receive(:active_call) }
+        it { should == nil }
+      end
+
+    end
+
     describe '#verify_status!' do
       context "given an agent that's on a call" do
         before do
