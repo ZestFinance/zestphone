@@ -6,6 +6,27 @@ module Telephony
       @routes = Engine.routes
     end
 
+    describe "#terminate_active_call" do
+      context "given an invalid csr id" do
+        before do
+         post :terminate_active_call, id: :bogus_id
+        end
+        it "responds with a status 400" do
+          response.should be_bad_request
+        end
+      end
+      context "given a valid csr id" do
+        before do
+         create :available_agent, :csr_id => 123
+         Agent.any_instance.should_receive(:terminate_active_call)
+         post :terminate_active_call, id: 123
+        end
+        it "responds successfully" do
+           response.should be_success
+        end
+      end
+    end
+
     describe "#update" do
       context "given an invalid agent params" do
         before do

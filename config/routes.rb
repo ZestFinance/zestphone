@@ -77,7 +77,8 @@ Telephony::Engine.routes.draw do
     end
 
     member do
-      put :status
+      put  :status
+      post :terminate_active_call
     end
   end
 

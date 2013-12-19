@@ -111,6 +111,10 @@ module Telephony
       self.update_attribute :timestamp_of_last_presence_event, timestamp
     end
 
+    def terminate_active_call
+      active_call.terminate! if active_call
+    end
+
     def active_call
       calls.where("state <> 'terminated'").last
     end

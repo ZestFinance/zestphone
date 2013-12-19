@@ -7,6 +7,17 @@ module Telephony
       render json: agent.as_json(only: [:id, :csr_id, :name], methods: :active_conversation_id)
     end
 
+    def terminate_active_call
+      agent = Agent.find_by_csr_id params[:id]
+
+      if agent
+        agent.terminate_active_call
+        render :json => {}
+      else
+        render status: :bad_request, json: { errors: 'Csr Id invalid' }
+      end
+    end
+
     def update
       agent = Agent.update_or_create_by_widget_data params
 
