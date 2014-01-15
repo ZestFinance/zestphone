@@ -116,9 +116,11 @@ module Telephony
       context 'given a connecting call' do
         before do
           @call = create :connecting_call
-          @call
-            .should_receive(:reload)
-            .and_return(@call)
+
+          @conversation = @call.conversation
+          @call.stub(:conversation).with(true).and_return(@conversation)
+          @call.stub(:conversation).and_return(@conversation)
+
           @call
             .conversation
             .should_receive(:check_for_successful_transfer)
@@ -229,9 +231,11 @@ module Telephony
       context "by default" do
         before do
           @call = create :connecting_call
-          @call
-            .should_receive(:reload)
-            .and_return(@call)
+          @conversation = @call.conversation
+
+          @call.stub(:conversation).with(true).and_return(@conversation)
+          @call.stub(:conversation).and_return(@conversation)
+
           @call
             .conversation
             .should_receive(:check_for_terminate)

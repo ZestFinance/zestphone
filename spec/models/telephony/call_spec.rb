@@ -224,6 +224,30 @@ module Telephony
 
       end
 
+      context 'In a conversation, customer leg hangs up' do
+
+        before do
+          ActiveRecord::Base.observers.enable :all
+          Telephony::PusherEventPublisher.stub(:push)
+          @convo = create :in_progress_conversation
+          @call1 = create :active_agent_leg, conversation_id: @convo.id
+          @call2 = create :customer_leg, conversation_id: @convo.id
+          @call1.agent.update_attribute(:status, 'on_a_call')
+        end
+
+        after do
+          ActiveRecord::Base.observers.disable :all
+        end
+
+        it 'Agent should be not available' do
+          @call2.terminate!
+          @call1.agent.reload
+          @call1.agent.should be_not_available
+        end
+
+      end
+
+
       context 'given a one step transfer call' do
         before do
           @call = create :one_step_transfer_call
