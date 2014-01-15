@@ -74,21 +74,22 @@ module Telephony
         end
 
         after_transition :on => :conference do |call|
-          call.reload.conversation.check_for_successful_transfer
+          call.conversation(true)
+          call.conversation.check_for_successful_transfer
           call.conversation.check_for_successful_resume
           call.conversation.check_for_successful_hold
         end
 
         after_transition :on => :dial_agent do |call|
-          call.reload.conversation.terminate_conferenced_calls call.id
+          call.conversation(true).terminate_conferenced_calls call.id
         end
 
         after_transition any => :terminated do |call|
-          call.reload.conversation.check_for_terminate
+          call.conversation(true).check_for_terminate
         end
 
         after_transition :on => :complete_hold do |call|
-          call.reload.conversation.check_for_successful_hold
+          call.conversation(true).check_for_successful_hold
         end
 
       end

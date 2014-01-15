@@ -220,6 +220,7 @@ describe 'Given a one step transfer' do
       say.text.should =~ /record your message/i
       record = xml.at '/Response/Record'
       record.attributes['action'].value.should == "/zestphone/providers/twilio/calls/#{@conversation.customer.id}/voicemail?csr_id=#{@agent.csr_id}"
+
     end
   end
 end
