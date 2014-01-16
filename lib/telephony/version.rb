@@ -1,3 +1,3 @@
 module Telephony
-  VERSION = '4.7.3'
+  VERSION = '1.0.2'
 end
