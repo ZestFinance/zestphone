@@ -23,7 +23,7 @@ module Telephony
       def self.find_last_for_agent(agent)
         return new_default_event unless agent.on_a_call?
 
-        call = agent.calls.last
+        call = agent.active_call
         return new_default_event unless call
 
         events = call.conversation.events.order(:id).reverse_order

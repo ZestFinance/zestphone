@@ -105,16 +105,32 @@ module Telephony
           end
 
           context 'with publishable events for agent1' do
-            it 'returns the last event for agent1' do
-              agent1 = create :on_a_call_agent
-              conversation = create :conversation
-              create :call, conversation: conversation, agent: agent1
-              create :call, conversation: conversation
-              publishable_event = build :conversation_start_event, conversation: conversation
+            before do
+              @agent1 = create :on_a_call_agent
+              @conversation1 = create :conversation
+              create :call, conversation: @conversation1, agent: @agent1
+              create :call, conversation: @conversation1
+              publishable_event = build :conversation_start_event, conversation: @conversation1
 
               publishable_event.update_attributes message_data: publishable_event.agent_messages
+            end
 
-              Base.find_last_for_agent(agent1).should be_an(Start)
+            it 'returns the last event for agent1' do
+              Base.find_last_for_agent(@agent1).should be_an(Start)
+            end
+
+            context "even if another agent transfers a call to the first agent" do
+              before do
+                @conversation2 = create(:in_progress_conversation).tap do |conversation|
+                  create :active_agent_leg, conversation: @conversation2
+                  create :customer_leg, conversation: @conversation2
+                end
+                @conversation2.transfer!(@agent1.csr_id, true)
+              end
+
+              it 'still returns the last event for agent1' do
+                Base.find_last_for_agent(@agent1).should be_an(Start)
+              end
             end
           end
         end
