@@ -35,7 +35,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'faker'
   gem 'rainbow'
-  gem 'jasmine-headless-webkit'
+  gem 'jasmine-headless-webkit', git: 'https://github.com/johnbintz/jasmine-headless-webkit.git'
   gem 'jasmine-rails'
 end
 
