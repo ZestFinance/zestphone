@@ -1041,4 +1041,136 @@ http_interactions:
 '
     http_version: 
   recorded_at: Tue, 21 Jan 2014 22:06:06 GMT
+- request:
+    method: post
+    uri: http://api.pusherapp.com/apps/xxx/events?auth_key=xxx&auth_signature=6fcdd0549d5248a42bc29721f97b9e5b70e07b989bb77321270cb00e06a7184f&auth_timestamp=1392242010&auth_version=1.0&body_md5=8974204f17cbb25244a2cceb1c022830
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"statusChange","channels":["csrs-291"],"data":"{\"status\":\"on_a_call\",\"timestamp\":1392242010454}"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - text/html;charset=utf-8
+      Server:
+      - thin 1.5.0 codename Knife
+      Content-Length:
+      - '17'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! 'Unknown auth_key
+
+'
+    http_version: 
+  recorded_at: Wed, 12 Feb 2014 21:53:30 GMT
+- request:
+    method: post
+    uri: http://api.pusherapp.com/apps/xxx/events?auth_key=xxx&auth_signature=f4c2779f10384a6fb31d76bc374a597d78d6ff3f018a151b3c5afe7ee9580c56&auth_timestamp=1392242010&auth_version=1.0&body_md5=91b0fcfbdd2e0d0f74c83f4001e1c8b4
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"QueueChange","channels":["csrs-291"],"data":"{\"size\":0,\"event_id\":326}"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - text/html;charset=utf-8
+      Server:
+      - thin 1.5.0 codename Knife
+      Content-Length:
+      - '17'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! 'Unknown auth_key
+
+'
+    http_version: 
+  recorded_at: Wed, 12 Feb 2014 21:53:30 GMT
+- request:
+    method: post
+    uri: http://api.pusherapp.com/apps/xxx/events?auth_key=xxx&auth_signature=290ccf85bf33e31f856ec184585f4915cb689a298c4a09837cfff850a20de517&auth_timestamp=1392243654&auth_version=1.0&body_md5=0dbeffc60bd1976f3ee8fc22bf8e912d
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"statusChange","channels":["csrs-291"],"data":"{\"status\":\"on_a_call\",\"timestamp\":1392243654690}"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - text/html;charset=utf-8
+      Server:
+      - thin 1.5.0 codename Knife
+      Content-Length:
+      - '17'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! 'Unknown auth_key
+
+'
+    http_version: 
+  recorded_at: Wed, 12 Feb 2014 22:20:54 GMT
+- request:
+    method: post
+    uri: http://api.pusherapp.com/apps/xxx/events?auth_key=xxx&auth_signature=ea3f40e5e4a764d30748fbdb7333db2fcc30c795699d13c0881a5409e566c38e&auth_timestamp=1392243654&auth_version=1.0&body_md5=2bc341fbac66f593357a195b517459e3
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"QueueChange","channels":["csrs-291"],"data":"{\"size\":0,\"event_id\":982}"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - text/html;charset=utf-8
+      Server:
+      - thin 1.5.0 codename Knife
+      Content-Length:
+      - '17'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! 'Unknown auth_key
+
+'
+    http_version: 
+  recorded_at: Wed, 12 Feb 2014 22:20:55 GMT
 recorded_with: VCR 2.0.0

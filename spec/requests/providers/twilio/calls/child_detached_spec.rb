@@ -205,12 +205,11 @@ describe 'Given a one step transfer' do
   end
 
   context 'for an unanswered call' do
+    let(:parameters) { {DialCallStatus: 'no-answer'} }
     before do
       @conversation = create :one_step_transferring_conversation
       @agent = @conversation.active_agent_leg.agent
-
-      post "/zestphone/providers/twilio/calls/#{@conversation.customer.id}/child_detached",
-        DialCallStatus: 'no-answer'
+      post "/zestphone/providers/twilio/calls/#{@conversation.customer.id}/child_detached", parameters
     end
 
     it 'renders the voicemails/new twiml' do
@@ -220,7 +219,20 @@ describe 'Given a one step transfer' do
       say.text.should =~ /record your message/i
       record = xml.at '/Response/Record'
       record.attributes['action'].value.should == "/zestphone/providers/twilio/calls/#{@conversation.customer.id}/voicemail?csr_id=#{@agent.csr_id}"
+    end
 
+  end
+
+  context 'when call status is completed' do
+    let(:parameters) { {DialCallStatus: 'no-answer', CallStatus: 'completed'} }
+    before do
+      @conversation = create :one_step_transferring_conversation
+      @agent = @conversation.active_agent_leg.agent
+      post "/zestphone/providers/twilio/calls/#{@conversation.customer.id}/child_detached", parameters
+    end
+    it 'terminates the agent call' do
+      @conversation.reload
+      @conversation.customer.state.should == 'terminated'
     end
   end
 end

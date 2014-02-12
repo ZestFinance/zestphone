@@ -54,10 +54,15 @@ module Telephony
               @child_call.busy!
             end
 
-            if @child_call.conversation.enqueued?
-              render 'telephony/providers/twilio/inbound_calls/enqueue'
-            elsif @child_call.conversation.leaving_voicemail?
-              render 'telephony/providers/twilio/voicemails/new'
+            case params[:CallStatus]
+            when 'completed'
+              @call.terminate
+            else
+              if @child_call.conversation.enqueued?
+                render 'telephony/providers/twilio/inbound_calls/enqueue'
+              elsif @child_call.conversation.leaving_voicemail?
+                render 'telephony/providers/twilio/voicemails/new'
+              end
             end
           end
         end
