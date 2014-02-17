@@ -56,6 +56,20 @@ module Telephony
       end
     end
 
+    describe "#terminate_conversation_and_all_call_legs" do
+      before do
+        conversation = create(:in_progress_conversation_with_calls)
+        @call = conversation.calls.first # any call will do
+      end
+
+      it 'terminates call, conversation, and all associated calls' do
+        @call.terminate_conversation_and_all_call_legs
+        @call.reload
+        @call.state.should == 'terminated'
+        @call.conversation.calls.map(&:state).should == ['terminated','terminated','terminated']
+      end
+    end
+
     describe '#dial_into_conference!' do
       context "when calling the transferred to agent" do
         before do
@@ -201,6 +215,8 @@ module Telephony
         @call.connected_at.to_s.should == @expected_time.to_s
       end
     end
+
+
 
     describe '#terminate!' do
       context 'by default' do
