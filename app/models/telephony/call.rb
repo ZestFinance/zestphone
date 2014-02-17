@@ -80,6 +80,32 @@ module Telephony
       agent.present?
     end
 
+    ##
+    #  Nuclear termination
+    #  if trace_only is "true", we only print what we're going to do but not actually do it
+    def terminate_conversation_and_all_call_legs(trace_only = false)
+
+      if self.conversation
+
+        Rails.logger.info "zestphone: ** Terminating all linked calls and conversation **"
+        Rails.logger.info "zestphone: conversation - (pre) state:   #{self.conversation.state}"
+        Rails.logger.info "zestphone: conversation - (pre) details: #{self.conversation.inspect}"
+        Rails.logger.info "zestphone: calls - (pre) states:  #{self.conversation.calls.map(&:state)}"
+        Rails.logger.info "zestphone: calls - (pre) details: #{self.conversation.calls.map(&:inspect)}"
+
+        unless trace_only
+          self.conversation.calls.each do |c|
+            c.terminate!
+          end
+          self.conversation.terminate!
+        end
+      else
+        #  Conversation not found - terminate the current call anyway
+        Rails.logger.info "zestphone: call - details: #{self.inspect}"
+        self.terminate! unless trace_only
+      end
+    end
+
     private
 
     def number_without_whitelisting
