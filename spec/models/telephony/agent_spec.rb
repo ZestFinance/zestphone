@@ -276,10 +276,6 @@ module Telephony
           @conversation.state.should == 'terminated'
         end
       end
-
-      context "given an agent that's not on a call" do
-      end
-
     end
 
     describe '#terminate_active_call' do
