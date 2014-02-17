@@ -115,6 +115,15 @@ module Telephony
       active_call.terminate! if active_call
     end
 
+    def terminate_active_call_and_conversation
+      if active_call
+        active_call.conversation.terminate
+        active_call.conversation.calls.each do |call|
+          call.terminate
+        end
+      end
+    end
+
     def active_call
       calls.where("state <> 'terminated'").last
     end

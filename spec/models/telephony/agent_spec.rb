@@ -260,6 +260,28 @@ module Telephony
       end
     end
 
+
+    describe '#terminate_active_call_and_conversation' do
+
+      context "given an agent that's on a call" do
+        before do
+          @conversation = create(:in_progress_conversation_with_calls)
+          @agent = @conversation.active_agent_leg.agent
+        end
+
+        it 'terminates all calls and the conversation' do
+          @agent.terminate_active_call_and_conversation
+          @conversation.reload
+          @conversation.calls.map(&:state).should == ['terminated', 'terminated', 'terminated']
+          @conversation.state.should == 'terminated'
+        end
+      end
+
+      context "given an agent that's not on a call" do
+      end
+
+    end
+
     describe '#terminate_active_call' do
       subject { Agent.new.terminate_active_call }
 

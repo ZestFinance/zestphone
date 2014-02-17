@@ -20,6 +20,16 @@ FactoryGirl.define do
       end
     end
 
+    factory :dequeuing_conversation do |c|
+      state 'enqueued'
+      calls do
+        [
+          build(:in_progress_call, :conversation => nil),
+          build(:connecting_call, :conversation => nil, agent: build(:agent))
+        ]
+      end
+    end
+
     factory :one_step_transferring_conversation do |c|
       state 'one_step_transferring'
       calls do
