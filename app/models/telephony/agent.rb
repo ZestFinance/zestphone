@@ -116,12 +116,7 @@ module Telephony
     end
 
     def terminate_active_call_and_conversation
-      if active_call
-        active_call.conversation.terminate
-        active_call.conversation.calls.each do |call|
-          call.terminate
-        end
-      end
+      active_call.terminate_conversation_and_all_call_legs if active_call
     end
 
     def active_call
