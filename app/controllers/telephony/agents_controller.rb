@@ -11,7 +11,7 @@ module Telephony
       agent = Agent.find_by_csr_id params[:id]
 
       if agent
-        agent.with_lock { agent.terminate_active_call }
+        agent.with_lock { agent.terminate_active_call_and_conversation }
         render :json => {}
       else
         render status: :bad_request, json: { errors: 'Csr Id invalid' }

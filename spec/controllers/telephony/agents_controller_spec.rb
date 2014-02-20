@@ -18,7 +18,7 @@ module Telephony
       context "given a valid csr id" do
         before do
          create :available_agent, :csr_id => 123
-         Agent.any_instance.should_receive(:terminate_active_call)
+         Agent.any_instance.should_receive(:terminate_active_call_and_conversation)
          post :terminate_active_call, id: 123
         end
         it "responds successfully" do
