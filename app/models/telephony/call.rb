@@ -95,14 +95,14 @@ module Telephony
 
         unless trace_only
           self.conversation.calls.each do |c|
-            c.terminate!
+            c.terminate
           end
-          self.conversation.terminate!
+          self.conversation.terminate
         end
       else
         #  Conversation not found - terminate the current call anyway
         Rails.logger.info "zestphone: call - details: #{self.inspect}"
-        self.terminate! unless trace_only
+        self.terminate unless trace_only
       end
     end
 

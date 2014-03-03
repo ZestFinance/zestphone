@@ -24,7 +24,7 @@ GIT
 PATH
   remote: .
   specs:
-    telephony (1.0.6)
+    telephony (1.0.8)
       ejs
       kaminari
       pusher (= 0.11.3)
