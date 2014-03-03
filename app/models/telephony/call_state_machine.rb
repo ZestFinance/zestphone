@@ -48,7 +48,7 @@ module Telephony
         end
 
         event :terminate do
-          transition all - [:terminated] => :terminated
+          transition all => :terminated
         end
 
         event :complete_hold do
@@ -59,7 +59,7 @@ module Telephony
           call.connected_at = Time.now
         end
 
-        before_transition :on => :terminate do |call|
+        before_transition :on => :terminate, :except_from => :terminated do |call|
           call.terminated_at = Time.now
         end
 

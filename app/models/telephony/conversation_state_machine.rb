@@ -93,7 +93,7 @@ module Telephony
         end
 
         event :terminate do
-          transition all - [:terminated] => :terminated
+          transition all => :terminated
         end
 
         after_transition do |conversation, transition|

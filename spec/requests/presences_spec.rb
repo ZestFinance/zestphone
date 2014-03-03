@@ -42,8 +42,10 @@ describe 'Reloading the widget during a call', :vcr do
           @conversation2.transfer!(@conversation1.calls.first.agent.csr_id, true)
 
           Telephony::Events::Start.any_instance.should_receive(:republish_only_for)
-          
-          post '/zestphone/signals/agents/presences', @payload.to_query, get_pusher_params(@payload)
+
+          VCR.use_cassette "pushes the event for the active call", match_requests_on: [:path] do
+            post '/zestphone/signals/agents/presences', @payload.to_query, get_pusher_params(@payload)
+          end
         end
       end
     end
