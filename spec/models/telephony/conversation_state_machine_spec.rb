@@ -277,18 +277,26 @@ module Telephony
     end
 
     describe '#terminate!' do
-      before do
-        @conversation = create :in_progress_conversation
-        @conversation.terminate!
-      end
+      context "in progress call" do
+        before do
+          @conversation = create :in_progress_conversation
+          @conversation.terminate!
+        end
 
-      it 'transitions to "terminated"' do
-        @conversation.state.should == 'terminated'
-      end
+        it 'transitions to "terminated"' do
+          @conversation.state.should == 'terminated'
+        end
 
-      it 'logs a terminated event' do
-        event = Events::Terminate.last
-        event.should be
+        it 'logs a terminated event' do
+          event = Events::Terminate.last
+          event.should be
+        end
+      end
+      context "terminated call" do
+        it "doesn't raise an error" do
+          conversation = create :terminated_conversation
+          expect { conversation.terminate! }.to_not raise_error
+        end
       end
     end
 

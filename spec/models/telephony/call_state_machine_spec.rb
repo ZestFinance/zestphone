@@ -273,6 +273,20 @@ module Telephony
           @call.terminate!
         end
       end
+
+      context 'call is already terminated' do
+        before do
+          @call = create :terminated_call, terminated_at: nil
+        end
+
+        it "doesn't raise an error" do
+          expect { @call.terminate! }.to_not raise_error
+        end
+
+        it "doesn't update terminated_at" do
+          expect { @call.terminate! }.to_not change(@call, :terminated_at)
+        end
+      end
     end
 
     describe 'transitioning to terminated' do

@@ -108,7 +108,7 @@ module Telephony
 
     def check_for_terminate
       if active_on_call.size == 0
-        terminate! unless terminated?
+        terminate!
       elsif one_step_transferring? && active_on_call.size == 1
         fail_one_step_transfer!
       elsif leaving_voicemail? && active_on_call.size == 1
