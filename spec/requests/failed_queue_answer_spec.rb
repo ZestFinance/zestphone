@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe 'Creating a conversation' do
+  let(:twilio_provider) { double('twilio_provider', client: twilio_client) }
+  let(:twilio_client) { double('twilio_client', account: twilio_account) }
   let(:twilio_call1) { double('twilio_call1') }
-  let(:twilio_calls) { double('twilio_calls') }
+  let(:twilio_calls) { double('twilio_calls', find: twilio_call1) }
   let(:twilio_account) { double('twilio_account', calls: twilio_calls) }
 
   let(:agent) {  create :agent, csr_type: 'B' }
@@ -14,14 +16,11 @@ describe 'Creating a conversation' do
   let(:twilio_call)
 
   before do
-    ::Twilio::REST::Client.any_instance.stub_chain(:account, :calls).and_return(twilio_calls)
-    twilio_calls.stub(:find).and_return(twilio_call1)
+    Telephony.provider.stub(:client).and_return(twilio_client)
 
     twilio_call1.should_receive(:redirect_to).twice do |params|
       @call_redirect_params = params
     end
-
-    ::Twilio::REST::Client.any_instance.stub_chain(:account).and_return(twilio_account)
   end
 
   let(:attributes) do

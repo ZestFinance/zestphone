@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Reloading the widget during a call', :vcr do
+describe 'Reloading the widget during a call' do
   include PusherSignatureHelper
 
   describe '#create' do
