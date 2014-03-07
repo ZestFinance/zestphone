@@ -30,7 +30,7 @@ module Telephony
         def connect
           @call = Call.find_by_sid params[:CallSid]
           agent = Agent.find_by_csr_id params[:csr_id]
-          @connecting_call = @call.conversation.calls.find_by_agent_id agent.id
+          @connecting_call = @call.conversation.calls.where(["state != 'terminated' and agent_id = ? ", agent.id]).first
 
           render template: '/telephony/providers/twilio/calls/connect'
         end
