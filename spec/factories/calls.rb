@@ -4,6 +4,7 @@ FactoryGirl.define do
     sid
     number '562-555-5555'
     sequence :participant_id
+    created_at Time.now
 
     factory :lone_call do
       conversation nil

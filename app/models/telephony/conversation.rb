@@ -20,6 +20,22 @@ module Telephony
       :conversation_type,
       :transferee
 
+    scope :old_and_active, -> { where("created_at < ? and state != 'terminated'", 48.hours.ago) }
+
+    def self.clean_up!(options = {})
+      logger = options[:logger] || Rails.logger
+
+      if options[:log] == true
+        old_and_active.each do |conversation|
+          logger.info(conversation.inspect)
+        end
+      end
+
+      if options[:dry_run] != true
+        old_and_active.update_all(state: 'terminated')
+      end
+    end
+
     def self.begin!(args)
       agent = Agent.find_by_csr_id args[:from_id]
 

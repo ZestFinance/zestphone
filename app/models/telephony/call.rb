@@ -18,6 +18,22 @@ module Telephony
       :terminated_at,
       :agent
 
+    scope :old_and_active, -> { where("created_at < ? and state != 'terminated'", 48.hours.ago) }
+
+    def self.clean_up!(options = {})
+      logger = options[:logger] || Rails.logger
+
+      if options[:log] == true
+        old_and_active.each do |call|
+          logger.info(call.inspect)
+        end
+      end
+
+      if options[:dry_run] != true
+        old_and_active.update_all(state: 'terminated')
+      end
+    end
+
     def number with_protocol = false
       if agent
         agent.number with_protocol

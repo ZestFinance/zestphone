@@ -2,6 +2,48 @@ require 'spec_helper'
 
 module Telephony
   describe Conversation do
+    describe '.clean_up!' do
+      subject { described_class.clean_up! }
+      let(:query) { described_class.where('state != \'terminated\'').count }
+      let(:states) { described_class.state_machine.states.map(&:name) }
+      let(:non_terminated_states) { states - [:terminated] }
+
+      before :each do
+        states.each do |state|
+          create(:conversation, state: state, created_at: 49.hours.ago)
+          create(:conversation, state: state)
+        end
+      end
+
+      context 'default' do
+        subject { described_class.clean_up! }
+
+        it 'cleans up old conversations that are not terminated' do
+          subject
+          query.should == non_terminated_states.count
+        end
+      end
+
+      context 'with logging' do
+        subject { described_class.clean_up!(logger: logger, log: true) }
+        let(:logger) { double("Rails.logger", info: true) }
+
+        it 'logs every conversation that is being terminated' do
+          logger.should_receive(:info).exactly(non_terminated_states.count).times
+          subject
+        end
+      end
+
+      context 'with dry run' do
+        subject { described_class.clean_up!(dry_run: true) }
+
+        it 'does not terminate conversations' do
+          subject
+          query.should == (non_terminated_states.count * 2)
+        end
+      end
+    end
+
     describe '.begin!' do
       before do
         @from = '222-222-2222'

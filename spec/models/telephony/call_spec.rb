@@ -2,6 +2,48 @@ require 'spec_helper'
 
 module Telephony
   describe Call do
+    describe '.clean_up!' do
+      subject { described_class.clean_up! }
+      let(:query) { described_class.where('state != \'terminated\'').count }
+      let(:states) { described_class.state_machine.states.map(&:name) }
+      let(:non_terminated_states) { states - [:terminated] }
+
+      before :each do
+        states.each do |state|
+          create(:call, state: state, created_at: 49.hours.ago)
+          create(:call, state: state)
+        end
+      end
+
+      context 'default' do
+        subject { described_class.clean_up! }
+
+        it 'cleans up old calls that are not terminated' do
+          subject
+          query.should == non_terminated_states.count
+        end
+      end
+
+      context 'with logging' do
+        subject { described_class.clean_up!(logger: logger, log: true) }
+        let(:logger) { double("Rails.logger", info: true) }
+
+        it 'logs every call that is being terminated' do
+          logger.should_receive(:info).exactly(non_terminated_states.count).times
+          subject
+        end
+      end
+
+      context 'with dry run' do
+        subject { described_class.clean_up!(dry_run: true) }
+
+        it 'does not terminate calls' do
+          subject
+          query.should == (non_terminated_states.count * 2)
+        end
+      end
+    end
+
     describe '#make!' do
       context 'when calling the initiator' do
         before do
