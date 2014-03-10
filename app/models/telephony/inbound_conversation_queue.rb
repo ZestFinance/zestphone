@@ -52,9 +52,10 @@ module Telephony
           else
             raise Telephony::Error::QueueEmpty.new
           end
-        rescue Telephony::Error::NotInProgress
+        rescue Telephony::Error::NotInProgress => e
           agent_call.destroy
           conversation.customer.terminate!
+          Rails.logger.info("InboundConversationQueue.dequeue: Can't redirect call, retrying: Conversation #{conversation.id}: #{e.inspect}")
           retry
         end
       end
