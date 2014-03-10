@@ -125,6 +125,7 @@ module Telephony
 
       def create_call(args)
         raise_on_error('Failed to create a call') do
+          Rails.logger.info("Trying to create a call: #{args}")
           client.account.calls.create(from: args[:caller_id],
                                       to: args[:number],
                                       url: args[:callback_url],
@@ -135,6 +136,7 @@ module Telephony
 
       def redirect_or_raise(sid, to)
         raise_on_error("Failed to redirect #{sid} to #{to}") do
+          Rails.logger.info("Trying to redirect a call: #{sid} to #{to}")
           call = client.account.calls.find sid
           call.redirect_to to
           true
