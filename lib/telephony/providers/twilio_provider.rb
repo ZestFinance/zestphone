@@ -99,7 +99,7 @@ module Telephony
 
       def client
         options = { timeout: REQUEST_TIMEOUT_IN_SECONDS }
-        options.merge! @config[:client_options] if @config[:client_options]
+        options.merge! @config[:client_options].to_options! if @config[:client_options]
         @client ||= ::Twilio::REST::Client.new account_sid, auth_token, options
       end
 
