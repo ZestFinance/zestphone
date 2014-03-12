@@ -30,6 +30,8 @@ development:
   hold_music: https://api.twilio.com/cowbell.mp3
   wait_music: http://demo.twilio.com/hellomonkey/monkey.mp3
 
+  client_options:
+
 #These are the twilio test account credentials
 test:
   account_sid: AC8ab65d320fc5ca22b757d937ef013a31
@@ -42,7 +44,7 @@ test:
   behind_https_proxy:
   hold_music: https://example.com/hold_music.wav
   wait_music: https://example.com/wait_music.wav
-
+  client_options:
 
 # If you run cucumbers, you must put real twilio account info here
 # Also, the callback_root must match the automaton.yml settings
@@ -55,3 +57,4 @@ cucumber:
   use_twilio_digest_auth:
   callback_domain:
   behind_https_proxy:
+  client_options:

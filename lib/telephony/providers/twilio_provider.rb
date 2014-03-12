@@ -23,6 +23,7 @@ module Telephony
         self.voice_url = config[:voice_url]
         self.sms_application_sid = config[:sms_application_sid]
         self.twilio_provider_url = "#{callback_root}/providers/twilio/calls"
+        @config = config
         @incoming_phone_numbers_cache = {}
       end
 
@@ -97,7 +98,9 @@ module Telephony
       end
 
       def client
-        @client ||= ::Twilio::REST::Client.new account_sid, auth_token, timeout: REQUEST_TIMEOUT_IN_SECONDS
+        options = { timeout: REQUEST_TIMEOUT_IN_SECONDS }
+        options.merge! @config[:client_options] if @config[:client_options]
+        @client ||= ::Twilio::REST::Client.new account_sid, auth_token, options
       end
 
       private
