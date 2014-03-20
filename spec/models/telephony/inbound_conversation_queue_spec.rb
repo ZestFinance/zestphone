@@ -244,8 +244,8 @@ module Telephony
       context 'when agent is not found' do
         it 'fails' do
           expect {
-            described_class.with_agent_on_a_call(agent.csr_id) {}
-          }.to raise_error(NameError)
+            described_class.with_agent_on_a_call(5) {}
+          }.to raise_error(NoMethodError)
         end
       end
 
