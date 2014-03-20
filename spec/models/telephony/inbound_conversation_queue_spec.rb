@@ -239,5 +239,57 @@ module Telephony
         InboundConversationQueue.oldest_queued_conversation.should == nil
       end
     end
+
+    describe '.with_agent_on_a_call' do
+      context 'when agent is not found' do
+        it 'fails' do
+          expect {
+            described_class.with_agent_on_a_call(5) {}
+          }.to raise_error(NoMethodError)
+        end
+      end
+
+      context 'when agent is on a call' do
+        let(:agent) { create :on_a_call_agent }
+
+        it 'agent must not be on a call' do
+          expect {
+            described_class.with_agent_on_a_call(agent.csr_id) {}
+          }.to raise_error(Telephony::Error::AgentOnACall)
+        end
+      end
+
+      context 'when agent is not on a call' do
+        let!(:agent) { create :available_agent }
+
+        it 'changes agent status to on a call' do
+          expect {
+            described_class.with_agent_on_a_call(agent.csr_id) {}
+          }.to change { Agent.last.status }.from('available').to('on_a_call')
+        end
+
+        it 'does not move agent to on a call when error occurs' do
+          expect(Agent.last.status).to eq 'available'
+
+          expect {
+            described_class.with_agent_on_a_call(agent.csr_id) {
+              raise 'Error in block'
+            }
+          }.to raise_error
+
+          expect(Agent.last.status).to eq 'available'
+        end
+
+        it 'fires old status event so callbacks are triggered' do
+          Agent.any_instance.should_receive(:fire_events).with('available')
+
+          expect {
+            described_class.with_agent_on_a_call(agent.csr_id) {
+              raise 'Error in block'
+            }
+          }.to raise_error
+        end
+      end
+    end
   end
 end
