@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency "pusher", "0.11.3"
   s.add_dependency "ejs"
   s.add_dependency "sass"
+  s.add_dependency "redis-objects"
 end

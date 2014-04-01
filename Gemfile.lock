@@ -29,6 +29,7 @@ PATH
       kaminari
       pusher (= 0.11.3)
       rails (~> 3.0)
+      redis-objects
       sass
       state_machine
 
