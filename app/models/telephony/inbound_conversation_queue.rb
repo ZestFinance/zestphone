@@ -1,3 +1,5 @@
+require 'redis-objects'
+
 module Telephony
   class InboundConversationQueue
     def self.play_message(args)
