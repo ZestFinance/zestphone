@@ -62,16 +62,28 @@ module Telephony
     end
 
     def self.oldest_queued_conversation
-      Conversation.transaction do
-        conversation = Conversation
-          .where(state: 'enqueued')
-          .order(:created_at)
-          .lock(true)
-          .first
+      # Pop redis queue and use the id to find and return the associated conversation.
+      conversation = nil
+      while conversation.nil?
+        conversation = Conversation.where(id: pop, state: 'enqueued').first
+      end
 
+      Conversation.transaction do
         conversation.connect! if conversation
         conversation
       end
+    end
+
+    def self.push(conversation_id)
+      queue.push(conversation_id)
+    end
+
+    def self.pop
+      queue.shift
+    end
+
+    def self.queue
+      @@queue ||= Redis::List.new("conversation_queue")
     end
 
     private

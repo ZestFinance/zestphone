@@ -191,6 +191,9 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.0.7)
+    redis-objects (0.9.1)
+      redis (>= 3.0.2)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -275,6 +278,7 @@ DEPENDENCIES
   pusher
   rack-proxy
   rainbow
+  redis-objects
   rspec-rails
   ruby-graphviz
   sass

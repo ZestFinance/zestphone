@@ -23,6 +23,9 @@ module Telephony
               render template: 'telephony/providers/twilio/calls/whisper_tone'
             else
               conversation.enqueue!
+
+              # I think this is where you enqueue the conversation id to redis queue.
+              InboundConversationQueue.push(conversation.id)
             end
           end
         end

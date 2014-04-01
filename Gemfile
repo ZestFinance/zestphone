@@ -13,6 +13,7 @@ gem 'haml'
 gem 'sass'
 gem 'pusher'
 gem 'ejs'
+gem 'redis-objects'
 
 group :development do
   gem 'rack-proxy', :require => false
