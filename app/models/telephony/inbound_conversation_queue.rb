@@ -66,7 +66,7 @@ module Telephony
     def self.oldest_queued_conversation
       # Pop redis queue and use the id to find and return the associated conversation.
       conversation = nil
-      while conversation.nil?
+      while conversation.nil? && queue.count > 0
         conversation = Conversation.where(id: pop, state: 'enqueued').first
       end
 
