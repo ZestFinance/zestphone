@@ -29,6 +29,7 @@ PATH
       kaminari
       pusher (= 0.11.3)
       rails (~> 3.0)
+      redis-namespace
       redis-objects
       sass
       state_machine
@@ -193,6 +194,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redis (3.0.7)
+    redis-namespace (1.4.1)
+      redis (~> 3.0.4)
     redis-objects (0.9.1)
       redis (>= 3.0.2)
     rspec (2.11.0)
@@ -279,6 +282,7 @@ DEPENDENCIES
   pusher
   rack-proxy
   rainbow
+  redis-namespace
   redis-objects
   rspec-rails
   ruby-graphviz

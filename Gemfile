@@ -14,6 +14,7 @@ gem 'sass'
 gem 'pusher'
 gem 'ejs'
 gem 'redis-objects'
+gem 'redis-namespace'
 
 group :development do
   gem 'rack-proxy', :require => false

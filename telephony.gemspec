@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.add_dependency "ejs"
   s.add_dependency "sass"
   s.add_dependency "redis-objects"
+  s.add_dependency "redis-namespace"
 end
