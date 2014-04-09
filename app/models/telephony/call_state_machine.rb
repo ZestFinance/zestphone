@@ -15,7 +15,8 @@ module Telephony
         end
 
         event :no_answer do
-          transition connecting: :terminated
+          transition connecting: :terminated,
+                     in_progress: :terminated # twilio bug--just terminate the call
         end
 
         event :busy do
