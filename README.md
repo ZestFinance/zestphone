@@ -1,8 +1,5 @@
-[![Build Status](https://travis-ci.org/ZestFinance/zestphone.svg?branch=master)](https://travis-ci.org/ZestFinance/zestphone) [![Code Climate](https://codeclimate.com/github/ZestFinance/zestphone.png)](https://codeclimate.com/github/ZestFinance/zestphone)
-Telephony call-center software
-=======
-ZestPhone
-================
+# ZestPhone [![Build Status](https://travis-ci.org/ZestFinance/zestphone.svg?branch=master)](https://travis-ci.org/ZestFinance/zestphone) [![Code Climate](https://codeclimate.com/github/ZestFinance/zestphone.png)](https://codeclimate.com/github/ZestFinance/zestphone)
+Telephony call center software
 
 ## Who we are
 We are Zestfinance (zestfinance.com) a financial services company that helps lenders with underwriting and loan servicing.  In addition to building cutting-edge underwriting algorithms, we’ve also built a host of home-grown CRM tools and loan servicing products for our lending partners.  We recently added call-center style phone controls into our existing CRM by leveraging Twilio’s cloud-based communication technology, which we call ZestPhone.
