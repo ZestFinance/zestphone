@@ -11,12 +11,12 @@ By the end of these step-by-step setup instructions, you should be able to:
 
 ### Contents
 
-- External Services
-- Configure Project and Tests
-- Tunneling Solutions
-- Twilio-App Interoperability Setup
-- Pusher-App Interoperability Setup
-- Server Startup / Testing
+- [External Services](#external-services)
+- [Configure Project and Tests](#configure-project-and-tests)
+- [Tunneling Solutions](#tunneling-solutions)
+- [Twilio-App Interoperability Setup](#twilio-app-interoperability-setup)
+- [Pusher-App Interoperability Setup](#pusher-app-interoperability-setup)
+- [Server Startup / Testing](#server-startup--testing)
 
 
 ### External Services
