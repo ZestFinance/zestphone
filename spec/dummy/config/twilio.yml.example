@@ -34,8 +34,8 @@ development:
 
 #These are the twilio test account credentials
 test:
-  account_sid: 
-  auth_token: 
+  account_sid: fake_account_sid
+  auth_token: fake_auth_token
   outbound_caller_id: 500-555-0006
   callback_root: http://example.com:8080/zestphone
   voice_url:
