@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://AC8ab65d320fc5ca22b757d937ef013a31:c63af64b012e06a4fa4bf6223823c834@api.twilio.com/2010-04-01/Accounts/AC8ab65d320fc5ca22b757d937ef013a31/IncomingPhoneNumbers.json
+    uri: https://fake_account_sid:fake_auth_token@api.twilio.com/2010-04-01/Accounts/fake_account_sid/IncomingPhoneNumbers.json
     body:
       encoding: US-ASCII
       string: AreaCode=500&VoiceUrl&SmsApplicationSid
@@ -34,9 +34,9 @@ http_interactions:
       - ''
     body:
       encoding: US-ASCII
-      string: ! '{"sid":"PNf0799557a23001d70c5bc011d8398536","account_sid":"AC8ab65d320fc5ca22b757d937ef013a31","friendly_name":"(500)
+      string: ! '{"sid":"PNf0799557a23001d70c5bc011d8398536","account_sid":"fake_account_sid","friendly_name":"(500)
         555-0006","phone_number":"+15005550006","voice_url":"","voice_method":"POST","voice_fallback_url":"","voice_fallback_method":"POST","voice_caller_id_lookup":false,"date_created":"Thu,
-        14 Feb 2013 22:17:38 +0000","date_updated":"Thu, 14 Feb 2013 22:17:38 +0000","sms_url":"","sms_method":"POST","sms_fallback_url":"","sms_fallback_method":"POST","capabilities":{"voice":false,"sms":false},"status_callback":"","status_callback_method":"POST","api_version":"2010-04-01","voice_application_sid":"","sms_application_sid":"","uri":"\/2010-04-01\/Accounts\/AC8ab65d320fc5ca22b757d937ef013a31\/IncomingPhoneNumbers\/PNf0799557a23001d70c5bc011d8398536.json"}'
-    http_version: 
+        14 Feb 2013 22:17:38 +0000","date_updated":"Thu, 14 Feb 2013 22:17:38 +0000","sms_url":"","sms_method":"POST","sms_fallback_url":"","sms_fallback_method":"POST","capabilities":{"voice":false,"sms":false},"status_callback":"","status_callback_method":"POST","api_version":"2010-04-01","voice_application_sid":"","sms_application_sid":"","uri":"\/2010-04-01\/Accounts\/fake_account_sid\/IncomingPhoneNumbers\/PNf0799557a23001d70c5bc011d8398536.json"}'
+    http_version:
   recorded_at: Thu, 14 Feb 2013 22:17:38 GMT
 recorded_with: VCR 2.0.0
