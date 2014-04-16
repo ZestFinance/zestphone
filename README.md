@@ -1,5 +1,7 @@
 # ZestPhone [![Build Status](https://travis-ci.org/ZestFinance/zestphone.svg?branch=master)](https://travis-ci.org/ZestFinance/zestphone) [![Code Climate](https://codeclimate.com/github/ZestFinance/zestphone.png)](https://codeclimate.com/github/ZestFinance/zestphone)
 
+![telephony](tele_phone_y.png)
+
 ## What is ZestPhone?
 Zestphone is a telephony call center agent-coordination software.
 ZestPhone is a drop-in phone widget that can be simply added to any web application to give you full call center functionality.  
