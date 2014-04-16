@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ZestFinance/zestphone.svg?branch=master)](https://travis-ci.org/ZestFinance/zestphone)
+[![Build Status](https://travis-ci.org/ZestFinance/zestphone.svg?branch=master)](https://travis-ci.org/ZestFinance/zestphone) [![Code Climate](https://codeclimate.com/github/ZestFinance/zestphone.png)](https://codeclimate.com/github/ZestFinance/zestphone)
 Telephony call-center software
 =======
 ZestPhone
