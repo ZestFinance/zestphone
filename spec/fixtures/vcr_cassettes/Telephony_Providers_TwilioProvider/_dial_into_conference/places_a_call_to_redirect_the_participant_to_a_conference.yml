@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://AC8ab65d320fc5ca22b757d937ef013a31:c63af64b012e06a4fa4bf6223823c834@api.twilio.com/2010-04-01/Accounts/AC8ab65d320fc5ca22b757d937ef013a31/Calls.json
+    uri: https://fake_account_sid:fake_auth_token@api.twilio.com/2010-04-01/Accounts/fake_account_sid/Calls.json
     body:
       encoding: US-ASCII
       string: From=500-555-0006&To=555-555-1238&Url=http%3A%2F%2Fexample.com%3A8080%2Fzestphone%2Fproviders%2Ftwilio%2Fcalls%2F1%2Fjoin_conference&StatusCallback=http%3A%2F%2Fexample.com%3A8080%2Fzestphone%2Fproviders%2Ftwilio%2Fcalls%2F1%2Fdone&Timeout=15
@@ -35,8 +35,8 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: ! '{"sid":"CA1060d3001f2cd2f9e25f5de3e3e57415","date_created":"Thu,
-        14 Feb 2013 22:17:37 +0000","date_updated":"Thu, 14 Feb 2013 22:17:37 +0000","parent_call_sid":null,"account_sid":"AC8ab65d320fc5ca22b757d937ef013a31","to":"+14153902317","to_formatted":"(415)
-        390-2317","from":"+15005550006","from_formatted":"(500) 555-0006","phone_number_sid":null,"status":"queued","start_time":null,"end_time":null,"duration":null,"price":null,"direction":null,"answered_by":null,"api_version":"2010-04-01","annotation":null,"forwarded_from":null,"group_sid":null,"caller_name":null,"uri":"\/2010-04-01\/Accounts\/AC8ab65d320fc5ca22b757d937ef013a31\/Calls\/CA1060d3001f2cd2f9e25f5de3e3e57415.json","subresource_uris":{"notifications":"\/2010-04-01\/Accounts\/AC8ab65d320fc5ca22b757d937ef013a31\/Calls\/CA1060d3001f2cd2f9e25f5de3e3e57415\/Notifications.json","recordings":"\/2010-04-01\/Accounts\/AC8ab65d320fc5ca22b757d937ef013a31\/Calls\/CA1060d3001f2cd2f9e25f5de3e3e57415\/Recordings.json"}}'
-    http_version: 
+        14 Feb 2013 22:17:37 +0000","date_updated":"Thu, 14 Feb 2013 22:17:37 +0000","parent_call_sid":null,"account_sid":"fake_account_sid","to":"+14153902317","to_formatted":"(415)
+        390-2317","from":"+15005550006","from_formatted":"(500) 555-0006","phone_number_sid":null,"status":"queued","start_time":null,"end_time":null,"duration":null,"price":null,"direction":null,"answered_by":null,"api_version":"2010-04-01","annotation":null,"forwarded_from":null,"group_sid":null,"caller_name":null,"uri":"\/2010-04-01\/Accounts\/fake_account_sid\/Calls\/CA1060d3001f2cd2f9e25f5de3e3e57415.json","subresource_uris":{"notifications":"\/2010-04-01\/Accounts\/fake_account_sid\/Calls\/CA1060d3001f2cd2f9e25f5de3e3e57415\/Notifications.json","recordings":"\/2010-04-01\/Accounts\/fake_account_sid\/Calls\/CA1060d3001f2cd2f9e25f5de3e3e57415\/Recordings.json"}}'
+    http_version:
   recorded_at: Thu, 14 Feb 2013 22:17:37 GMT
 recorded_with: VCR 2.0.0
