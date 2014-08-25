@@ -93,22 +93,40 @@ module Telephony
     end
 
     describe '#answer!' do
-      before do
-        @call = create :connecting_call
-        @call.answer!
+      context 'given a connecting call' do
+        before do
+          @call = create :connecting_call
+          @call.answer!
+        end
+
+        it 'transitions to "in_progress"' do
+          @call.state.should == 'in_progress'
+        end
+
+        it 'sets a connected timestamp' do
+          @call.connected_at.should be
+        end
+
+        it 'logs a answer event' do
+          event = Events::Answer.last
+          event.should be
+        end
       end
 
-      it 'transitions to "in_progress"' do
-        @call.state.should == 'in_progress'
-      end
+      context 'given a terminated call' do
+        before do
+          @call = create :terminated_call, terminated_at: nil
+          @call.answer!
+        end
 
-      it 'sets a connected timestamp' do
-        @call.connected_at.should be
-      end
+        it 'transitions to "terminated"' do
+          @call.state.should == 'terminated'
+        end
 
-      it 'logs a answer event' do
-        event = Events::Answer.last
-        event.should be
+        it 'logs a terminate event' do
+          event = Events::Terminate.last
+          event.should be
+        end
       end
     end
 
@@ -174,6 +192,22 @@ module Telephony
           event.should be
         end
       end
+
+      context 'given a terminated call' do
+        before do
+          @call = create :terminated_call, terminated_at: nil
+          @call.conference!
+        end
+
+        it 'transitions to "terminated"' do
+          @call.state.should == 'terminated'
+        end
+
+        it 'logs a terminate event' do
+          event = Events::Terminate.last
+          event.should be
+        end
+      end
     end
 
     describe '#dial_agent!' do
@@ -217,12 +251,30 @@ module Telephony
     end
 
     describe "#complete_hold!" do
-      before { @call = create :in_progress_call }
-
       context "given an 'in_progress' call" do
-        it "transitions to 'in_progress_hold'" do
+        before do
+          @call = create :in_progress_call
           @call.complete_hold!
+        end
+
+        it "transitions to 'in_progress_hold'" do
           @call.should be_in_progress_hold
+        end
+      end
+
+      context 'given a terminated call' do
+        before do
+          @call = create :terminated_call, terminated_at: nil
+          @call.complete_hold!
+        end
+
+        it 'transitions to "terminated"' do
+          @call.state.should == 'terminated'
+        end
+
+        it 'logs a terminate event' do
+          event = Events::Terminate.last
+          event.should be
         end
       end
     end

@@ -28,14 +28,16 @@ module Telephony
         end
 
         event :answer do
-          transition connecting: :in_progress
+          transition connecting: :in_progress,
+                     terminated: :terminated # twilio bug--keep the call terminated
         end
 
         event :conference do
           transition connecting:       :in_conference,
                      in_progress:      :in_conference,
                      in_progress_hold: :in_conference,
-                     in_conference:    :in_conference
+                     in_conference:    :in_conference,
+                     terminated:       :terminated # twilio bug--keep the call terminated
         end
 
         event :dial_agent do
@@ -53,7 +55,8 @@ module Telephony
         end
 
         event :complete_hold do
-          transition [:in_progress, :in_conference] => :in_progress_hold
+          transition [:in_progress, :in_conference] => :in_progress_hold,
+                     terminated:                       :terminated # twilio bug--keep the call terminated
         end
 
         before_transition :on => :answer do |call|
